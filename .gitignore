@@ -1,0 +1,34 @@
+# ============================================================
+#  Git Ignore — Files that should NEVER be committed
+# ============================================================
+
+# API keys and secrets — NEVER commit these
+.env
+frontend/config.js
+
+# Compiled PDF resumes (generated files — large)
+compiled-resumes/*.pdf
+
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# Node modules (if any local packages added later)
+node_modules/
+
+# Python environment and caches
+venv/
+__pycache__/
+*.pyc
+
+# Local database and the PocketBase binary
+pocketbase/pb_data/
+pocketbase/pocketbase
+
+# Tectonic cache
+.tectonic/
+
+# Temporary files
+*.tmp
+*.log
+*.zip

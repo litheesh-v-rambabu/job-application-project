@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="config.js"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JobSuite | AI Outreach Email</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;}
+  body{font-family:'Inter',sans-serif;background-color:#f7f9fb;}
+  .custom-scrollbar::-webkit-scrollbar{width:4px;}
+  .custom-scrollbar::-webkit-scrollbar-track{background:transparent;}
+  .custom-scrollbar::-webkit-scrollbar-thumb{background:#e0e3e5;border-radius:10px;}
+</style>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#d3e4fe","on-secondary-container":"#54647a","on-tertiary-fixed-variant":"#004c6e","surface-container-high":"#e6e8ea","secondary":"#505f76","on-background":"#191c1e","outline-variant":"#c7c4d8","on-error-container":"#93000a","surface-variant":"#e0e3e5","inverse-primary":"#c3c0ff","tertiary-fixed":"#c9e6ff","surface-container":"#eceef0","on-error":"#ffffff","tertiary-fixed-dim":"#89ceff","error-container":"#ffdad6","background":"#f7f9fb","surface":"#f7f9fb","primary-fixed-dim":"#c3c0ff","secondary-fixed-dim":"#b7c8e1","on-primary-fixed":"#0f0069","surface-container-lowest":"#ffffff","on-secondary":"#ffffff","on-secondary-fixed":"#0b1c30","on-tertiary":"#ffffff","error":"#ba1a1a","inverse-on-surface":"#eff1f3","on-primary":"#ffffff","primary-container":"#4f46e5","surface-dim":"#d8dadc","on-primary-fixed-variant":"#3323cc","tertiary":"#004d70","outline":"#777587","on-surface":"#191c1e","inverse-surface":"#2d3133","on-secondary-fixed-variant":"#38485d","surface-container-low":"#f2f4f6","tertiary-container":"#006693","surface-container-highest":"#e0e3e5","secondary-container":"#d0e1fb","on-primary-container":"#dad7ff","surface-bright":"#f7f9fb","primary-fixed":"#e2dfff","on-tertiary-fixed":"#001e2f","on-surface-variant":"#464555","surface-tint":"#4d44e3","on-tertiary-container":"#b8e0ff","primary":"#3525cd"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"topbar_height":"52px","stack_gap":"12px","sidebar_width":"200px","gutter":"24px","container_max_width":"1200px","margin_mobile":"16px"},"fontFamily":{"h2":["Inter"],"label-sm":["Inter"],"h1":["Inter"],"body":["Inter"],"body-sm":["Inter"],"label-caps":["Inter"]},"fontSize":{"h2":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0px","fontWeight":"500"}],"h1":["20px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}],"body":["13px",{"lineHeight":"20px","letterSpacing":"0px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0px","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"600"}]}}}}
+</script>
+</head>
+<body class="bg-background text-on-surface">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-[200px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 gap-stack_gap z-50 overflow-y-auto">
+  <div class="flex flex-col gap-1 mb-6 shrink-0"><h1 class="font-h1 text-h1 text-primary">JobSuite</h1><p class="font-label-sm text-label-sm text-on-surface-variant">AI-Powered Career</p></div>
+  <div class="flex-1 space-y-6">
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Main</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="dashboard.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body text-body">Dashboard</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="job-board.html"><span class="material-symbols-outlined text-[20px]">work</span><span class="font-body text-body">Job Board</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="ats-checker.html"><span class="material-symbols-outlined text-[20px]">fact_check</span><span class="font-body text-body">ATS Checker</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="cover-letter.html"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-body text-body">Cover Letter</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">AI Tools</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-primary rounded-lg font-h2 cursor-pointer" href="outreach-email.html"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">mail</span><span class="font-h2 text-h2">Outreach Email</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="linkedin-note.html"><span class="material-symbols-outlined text-[20px]">share</span><span class="font-body text-body">LinkedIn Note</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="resume-generator.html"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-body text-body">Resume Tailor</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Data</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="contacts.html"><span class="material-symbols-outlined text-[20px]">contacts</span><span class="font-body text-body">Contacts</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="remote-jobs.html"><span class="material-symbols-outlined text-[20px]">public</span><span class="font-body text-body">Remote Jobs</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="mt-auto pt-4 border-t border-outline-variant shrink-0">
+    <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body text-body">Settings</span></a>
+  </div>
+</aside>
+
+<!-- TopBar -->
+<header class="fixed top-0 right-0 h-[52px] w-[calc(100%-200px)] bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-gutter z-40">
+  <div class="flex items-center gap-4 flex-1">
+    <div class="relative w-full max-w-md">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+      <input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-body font-body focus:ring-2 focus:ring-primary/20 placeholder:text-outline" placeholder="Search applications..." type="text"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface-variant">sensors</span></button>
+    <div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold text-xs" id="avatar-initials">LV</div>
+  </div>
+</header>
+
+<!-- Main -->
+<div class="ml-[200px] min-h-screen flex flex-col pt-[52px]">
+<main class="flex-1 p-gutter max-w-[1200px] w-full mx-auto">
+  <div class="mb-6">
+    <h1 class="font-h1 text-h1 text-on-surface mb-1">AI Outreach Email</h1>
+    <p class="font-body text-body text-on-surface-variant">Draft personalized cold emails to recruiters and hiring managers in seconds.</p>
+  </div>
+  <div class="grid grid-cols-12 gap-gutter items-start">
+    <!-- Left Panel -->
+    <section class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="material-symbols-outlined text-primary">person_search</span>
+          <h2 class="font-h2 text-h2 text-on-surface">Contact Details</h2>
+        </div>
+        <!-- Email Type Toggle -->
+        <div class="flex gap-2 mb-2">
+          <button class="flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-primary bg-primary text-white" id="type-referral" onclick="setEmailType('referral')">
+            🤝 Referral Request
+          </button>
+          <button class="flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-outline-variant bg-surface-container text-on-surface-variant" id="type-cold" onclick="setEmailType('cold')">
+            📨 Cold Outreach
+          </button>
+        </div>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-caps text-label-caps text-on-surface-variant">CONTACT NAME</label>
+            <input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2 font-body text-body focus:ring-2 focus:ring-primary outline-none transition-all" id="oe-name" type="text" placeholder="Sarah Jenkins"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-caps text-label-caps text-on-surface-variant">TITLE &amp; COMPANY</label>
+            <input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2 font-body text-body focus:ring-2 focus:ring-primary outline-none transition-all" id="oe-title-company" type="text" placeholder="Senior Recruiter at Vercel"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-caps text-label-caps text-on-surface-variant">EMAIL ADDRESS</label>
+            <input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2 font-body text-body focus:ring-2 focus:ring-primary outline-none transition-all" id="oe-email" placeholder="sarah@company.com" type="email"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-caps text-label-caps text-on-surface-variant">JOB TITLE APPLYING FOR</label>
+            <input class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2 font-body text-body focus:ring-2 focus:ring-primary outline-none transition-all" id="oe-job-title" type="text" placeholder="Senior ML Engineer"/>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-caps text-label-caps text-on-surface-variant">
+              JOB DESCRIPTION
+              <span class="normal-case text-[10px] text-primary ml-1">(paste for better personalization)</span>
+            </label>
+            <textarea class="w-full bg-surface-container-low border border-outline-variant rounded-xl px-4 py-2 font-body text-body focus:ring-2 focus:ring-primary outline-none transition-all resize-none text-[12px]" id="oe-job-desc" rows="4" placeholder="Paste the job description here. The AI will match your skills to the role and craft a highly targeted email..."></textarea>
+          </div>
+          <div class="flex flex-col gap-3 mt-2">
+            <button class="w-full bg-primary text-white py-2.5 rounded-xl font-h2 text-h2 hover:opacity-90 transition-all flex items-center justify-center gap-2 active:scale-[0.98]" id="oe-draft-btn">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">auto_awesome</span> Generate Email
+            </button>
+            <button class="w-full border border-primary text-primary py-2.5 rounded-xl font-h2 text-h2 hover:bg-secondary-container transition-all active:scale-[0.98]" id="oe-find-btn">
+              <span class="material-symbols-outlined text-[16px] align-middle">manage_search</span> Find Contact Email
+            </button>
+          </div>
+        </div>
+        <div class="my-6 border-t border-outline-variant"></div>
+        <!-- Contact Lookup Result -->
+        <div class="rounded-xl flex flex-col gap-4" id="oe-lookup-panel">
+          <div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-3" id="oe-lookup-result" style="display:none!important">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold text-lg" id="oe-lookup-avatar">?</div>
+              <div class="flex-1">
+                <h4 class="font-h2 text-h2 text-on-surface leading-tight" id="oe-lookup-name">-</h4>
+                <div class="flex items-center gap-2">
+                  <span class="font-label-sm text-label-sm px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full" id="oe-lookup-score">-</span>
+                  <span class="material-symbols-outlined text-emerald-600 text-[16px]" style="font-variation-settings:'FILL' 1;">verified</span>
+                </div>
+              </div>
+            </div>
+            <div class="bg-surface-container-lowest border border-outline-variant rounded-lg px-3 py-1.5 flex items-center gap-2">
+              <span class="material-symbols-outlined text-on-surface-variant text-[16px]">email</span>
+              <span class="font-body-sm text-body-sm text-secondary truncate" id="oe-lookup-email">-</span>
+            </div>
+          </div>
+          <div class="text-center text-on-surface-variant font-body-sm text-body-sm py-2" id="oe-lookup-empty">Enter a name and domain, then click "Find Contact"</div>
+        </div>
+      </div>
+
+      <div class="bg-primary-container text-on-primary rounded-xl p-6 relative overflow-hidden group">
+        <div class="relative z-10">
+          <h3 class="font-h1 text-h1 mb-2">Upgrade to Pro</h3>
+          <p class="font-body text-body-sm opacity-90 mb-4">Unlimited email generations and advanced recruiter lookup tools.</p>
+          <button class="bg-white text-primary px-4 py-2 rounded-lg font-h2 text-h2 hover:bg-surface-container-lowest transition-colors">View Plans</button>
+        </div>
+        <span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 group-hover:rotate-12 transition-transform duration-500">rocket_launch</span>
+      </div>
+    </section>
+
+    <!-- Right Panel: Email Draft -->
+    <section class="col-span-12 lg:col-span-8">
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex flex-col h-[740px]">
+        <!-- Header -->
+        <div class="px-6 py-4 border-b border-outline-variant flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-on-surface-variant">edit_note</span>
+            <h2 class="font-h2 text-h2 text-on-surface">Email Draft</h2>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface font-h2 text-h2 px-3 py-1.5 rounded-lg transition-colors" id="oe-copy-btn">
+              <span class="material-symbols-outlined text-[20px]">content_copy</span> Copy
+            </button>
+            <button class="flex items-center gap-2 border font-h2 text-h2 px-3 py-1.5 rounded-lg transition-all text-[13px]" id="oe-gmail-connect" title="Connect Gmail to save drafts">
+              <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.84 1.22 15.11.13 12 .13 7.865.13 4.097 2.45 2.053 5.876L5.266 9.765z"/><path fill="#34A853" d="M16.04 18.013c-1.09.73-2.49 1.077-4.04 1.077a7.08 7.08 0 0 1-6.723-4.777L2.08 18.152C4.1 21.53 7.84 23.87 12 23.87c2.97 0 5.67-1.07 7.75-2.88l-3.71-2.977z"/><path fill="#FBBC05" d="M19.75 21c2.2-2.07 3.62-5.11 3.62-8.97 0-.67-.06-1.32-.18-1.95H12v3.98h6.44a5.38 5.38 0 0 1-2.4 3.57L19.75 21z"/><path fill="#EA4335" d="M5.27 14.31a7.11 7.11 0 0 1-.38-2.31c0-.82.14-1.61.38-2.31L2.05 5.78A11.86 11.86 0 0 0 .7 12c0 2.29.61 4.44 1.67 6.31l3.9-4z"/></svg>
+              Connect Gmail
+            </button>
+            <button class="flex items-center gap-2 bg-blue-600 text-white font-h2 text-h2 px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-all shadow-sm opacity-50 cursor-not-allowed text-[13px]" id="oe-draft-save-btn" disabled>
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">save</span> Save as Draft
+            </button>
+            <button class="flex items-center gap-2 bg-emerald-600 text-white font-h2 text-h2 px-3 py-1.5 rounded-lg hover:bg-emerald-700 transition-all shadow-sm text-[13px]" id="oe-send-btn">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">send</span> Open in Gmail
+            </button>
+          </div>
+        </div>
+        <!-- TO / SUBJECT -->
+        <div class="flex flex-col">
+          <div class="px-6 py-4 border-b border-outline-variant flex items-center gap-4">
+            <span class="font-label-caps text-label-caps text-on-surface-variant w-16">TO</span>
+            <div class="flex-1 bg-surface-container-low px-3 py-1 rounded-lg font-body text-body text-secondary border border-outline-variant/50" id="oe-to-display">—</div>
+          </div>
+          <div class="px-6 py-4 border-b border-outline-variant flex items-center gap-4">
+            <span class="font-label-caps text-label-caps text-on-surface-variant w-16">SUBJECT</span>
+            <input class="flex-1 bg-transparent border-none p-0 font-h2 text-h2 focus:ring-0 text-on-surface outline-none" id="oe-subject" type="text" placeholder="Subject line will appear here..."/>
+          </div>
+        </div>
+        <!-- Body -->
+        <div class="flex-1 p-8 overflow-y-auto custom-scrollbar bg-surface-bright/30">
+          <div class="max-w-2xl mx-auto space-y-5 font-body text-body leading-relaxed text-on-surface-variant outline-none" contenteditable="true" id="oe-body">
+            <p class="text-outline italic">Click "Draft Email" to generate your personalized outreach email.</p>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div class="px-6 py-3 bg-surface-container-low border-t border-outline-variant flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1.5 text-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]">auto_fix_high</span>
+              <span class="font-label-sm text-label-sm" id="oe-tone-label">Tone: Formal Referral Request</span>
+            </div>
+            <div class="w-px h-4 bg-outline-variant"></div>
+            <div class="flex items-center gap-1.5 text-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]">text_fields</span>
+              <span class="font-label-sm text-label-sm" id="oe-word-count">0 Words</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="p-1.5 hover:bg-surface-container-high rounded transition-colors text-on-surface-variant" onclick="generateEmail()">
+              <span class="material-symbols-outlined text-[20px]">refresh</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+</div>
+
+<!-- FAB: positioned above chatbot button -->
+<div class="fixed bottom-24 right-6">
+  <button class="bg-primary text-on-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform active:scale-95 group" onclick="generateEmail()">
+    <span class="material-symbols-outlined text-[22px]">refresh</span>
+    <div class="absolute right-14 bg-inverse-surface text-inverse-on-surface px-3 py-1.5 rounded-lg font-label-sm text-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Regenerate</div>
+  </button>
+</div>
+
+<!-- Toast -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-on-surface text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 translate-y-24 opacity-0 transition-all duration-300 z-50" id="toast">
+  <span class="material-symbols-outlined text-emerald-400">check_circle</span>
+  <p class="font-body font-medium" id="toast-msg"></p>
+</div>
+
+<script>
+const EC = window.ENV_CONFIG || {};
+const CFG = {
+  get n8n()              { return localStorage.getItem('js_n8n_url')           || EC.n8n_url           || 'http://localhost:5678/webhook'; },
+  get groq_key()         { return localStorage.getItem('js_groq_key')          || EC.groq_key          || ''; },
+  get hunter_key()       { return localStorage.getItem('js_hunter_key')        || EC.hunter_key        || ''; },
+  get google_client_id() { return localStorage.getItem('js_google_client_id')  || EC.google_client_id  || ''; },
+  get resume()           { return localStorage.getItem('js_resume_text')        || ''; },
+  get name()             { return localStorage.getItem('js_user_name')          || 'Litheesh Velakaturi Rambabu'; },
+  get email()            { return localStorage.getItem('js_user_email')         || 'vrlitheesh2002@gmail.com'; },
+  get phone()            { return localStorage.getItem('js_user_phone')         || '+1 (716) 368-9971'; },
+  get website()          { return localStorage.getItem('js_user_website')       || 'litheesh.com'; },
+  get title()            { return localStorage.getItem('js_user_title')         || 'AI & ML Engineer'; },
+};
+
+// ─── GMAIL OAUTH ─────────────────────────────────────────────
+let tokenClient = null;
+let gmailAccessToken = null;
+
+function getStoredToken() {
+  const token  = localStorage.getItem('gmail_access_token');
+  const expiry = parseInt(localStorage.getItem('gmail_token_expiry') || '0');
+  return (token && Date.now() < expiry - 60000) ? token : null;
+}
+
+function updateGmailUI() {
+  const connectBtn  = document.getElementById('oe-gmail-connect');
+  const draftBtn    = document.getElementById('oe-draft-save-btn');
+  const isConnected = !!(gmailAccessToken || getStoredToken());
+  if (isConnected) {
+    connectBtn.innerHTML = `<span class="material-symbols-outlined text-[16px]" style="font-variation-settings:'FILL' 1;color:#16a34a">check_circle</span> Gmail Connected`;
+    connectBtn.className = connectBtn.className.replace('bg-white text-primary border-primary','') + ' bg-emerald-50 text-emerald-700 border-emerald-300 border font-h2 text-h2 px-3 py-1.5 rounded-lg flex items-center gap-2 text-[13px]';
+    draftBtn.disabled = false;
+    draftBtn.classList.remove('opacity-50','cursor-not-allowed');
+  } else {
+    connectBtn.className = 'flex items-center gap-2 border border-outline-variant bg-white text-on-surface font-h2 text-h2 px-3 py-1.5 rounded-lg transition-all text-[13px] hover:border-primary hover:text-primary cursor-pointer';
+    connectBtn.innerHTML = `<svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.84 1.22 15.11.13 12 .13 7.865.13 4.097 2.45 2.053 5.876L5.266 9.765z"/><path fill="#34A853" d="M16.04 18.013c-1.09.73-2.49 1.077-4.04 1.077a7.08 7.08 0 0 1-6.723-4.777L2.08 18.152C4.1 21.53 7.84 23.87 12 23.87c2.97 0 5.67-1.07 7.75-2.88l-3.71-2.977z"/><path fill="#FBBC05" d="M19.75 21c2.2-2.07 3.62-5.11 3.62-8.97 0-.67-.06-1.32-.18-1.95H12v3.98h6.44a5.38 5.38 0 0 1-2.4 3.57L19.75 21z"/><path fill="#EA4335" d="M5.27 14.31a7.11 7.11 0 0 1-.38-2.31c0-.82.14-1.61.38-2.31L2.05 5.78A11.86 11.86 0 0 0 .7 12c0 2.29.61 4.44 1.67 6.31l3.9-4z"/></svg> Connect Gmail`;
+    draftBtn.disabled = true;
+    draftBtn.classList.add('opacity-50','cursor-not-allowed');
+  }
+}
+
+function initGoogleAuth() {
+  const clientId = CFG.google_client_id;
+  if (!clientId) { showToast('Add your Google Client ID in Settings first.','error'); return; }
+  if (typeof google === 'undefined') { showToast('Google SDK not loaded. Make sure you are on http://localhost:8080','error'); return; }
+
+  tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: clientId,
+    scope: 'https://www.googleapis.com/auth/gmail.compose',
+    callback: (resp) => {
+      if (resp.error) { showToast('Gmail auth error: ' + resp.error,'error'); return; }
+      gmailAccessToken = resp.access_token;
+      localStorage.setItem('gmail_access_token', gmailAccessToken);
+      localStorage.setItem('gmail_token_expiry', Date.now() + (resp.expires_in * 1000));
+      updateGmailUI();
+      showToast('✅ Gmail connected! You can now save drafts.');
+    }
+  });
+
+  // Check for existing valid token
+  const stored = getStoredToken();
+  if (stored) { gmailAccessToken = stored; }
+  updateGmailUI();
+
+  // If not connected, trigger sign-in
+  if (!gmailAccessToken) {
+    tokenClient.requestAccessToken({ prompt: 'consent' });
+  }
+}
+
+async function saveGmailDraft() {
+  const token = gmailAccessToken || getStoredToken();
+  if (!token) { showToast('Connect Gmail first.','error'); return; }
+
+  const toAddr  = document.getElementById('oe-email').value.trim() || document.getElementById('oe-to-display').textContent.trim();
+  const subject = document.getElementById('oe-subject').value.trim();
+  const body    = document.getElementById('oe-body').innerText.trim();
+
+  if (!subject || body.startsWith('Click "Draft Email"')) {
+    showToast('Generate an email first, then save as draft.','error'); return;
+  }
+
+  const draftBtn = document.getElementById('oe-draft-save-btn');
+  draftBtn.innerHTML = `<svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Saving...`;
+  draftBtn.disabled = true;
+
+  try {
+    // Build RFC 2822 formatted email
+    const rfc = [
+      toAddr  ? `To: ${toAddr}`    : '',
+      `Subject: ${subject}`,
+      `MIME-Version: 1.0`,
+      `Content-Type: text/plain; charset=UTF-8`,
+      ``,
+      body
+    ].filter(Boolean).join('\r\n');
+
+    // Base64url encode (required by Gmail API)
+    const encoded = btoa(unescape(encodeURIComponent(rfc)))
+      .replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+
+    const res = await fetch('https://gmail.googleapis.com/gmail/v1/users/me/drafts', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: { raw: encoded } })
+    });
+
+    if (res.status === 401) {
+      // Token expired — clear and ask to reconnect
+      gmailAccessToken = null;
+      localStorage.removeItem('gmail_access_token');
+      localStorage.removeItem('gmail_token_expiry');
+      updateGmailUI();
+      showToast('Gmail session expired. Click "Connect Gmail" to reconnect.','error');
+      return;
+    }
+
+    const data = await res.json();
+    if (data.id) {
+      showToast('✅ Draft saved to Gmail! Check your Drafts folder.');
+    } else {
+      throw new Error(data.error?.message || 'Gmail API error');
+    }
+  } catch(err) {
+    showToast('Failed to save draft: ' + err.message,'error');
+  } finally {
+    draftBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1;">save</span> Save as Draft`;
+    draftBtn.disabled = false;
+  }
+}
+
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast'),m=document.getElementById('toast-msg');
+  if(!t||!m) return; m.textContent=msg;
+  const ic=t.querySelector('.material-symbols-outlined');
+  if(ic){ic.textContent=type==='error'?'error':'check_circle';ic.className=`material-symbols-outlined ${type==='error'?'text-red-400':'text-emerald-400'}`;}
+  t.classList.remove('translate-y-24','opacity-0');t.classList.add('translate-y-0','opacity-100');
+  setTimeout(()=>{t.classList.remove('translate-y-0','opacity-100');t.classList.add('translate-y-24','opacity-0');},4000);
+}
+
+// ─── ALL AI CALLS GO THROUGH n8n — resume lives in the workflow ───
+async function callN8N(endpoint, payload){
+  const url = `${CFG.n8n}/${endpoint}`;
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!r.ok) {
+    const errText = await r.text().catch(()=>'');
+    throw new Error(`n8n error ${r.status}${errText ? ': '+errText : '. Is n8n running?'}`);
+  }
+  return await r.json();
+}
+
+function updateWordCount(){
+  const body = document.getElementById('oe-body');
+  const text = body.innerText.trim();
+  const count = text ? text.split(/\s+/).length : 0;
+  document.getElementById('oe-word-count').textContent = `${count} Words`;
+}
+
+// ─── EMAIL TYPE STATE ────────────────────────────────────────
+let currentEmailType = 'referral';
+
+function setEmailType(type) {
+  currentEmailType = type;
+  const refBtn  = document.getElementById('type-referral');
+  const coldBtn = document.getElementById('type-cold');
+  const toneLabel = document.getElementById('oe-tone-label');
+  if (type === 'referral') {
+    refBtn.className  = 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-primary bg-primary text-white';
+    coldBtn.className = 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-outline-variant bg-surface-container text-on-surface-variant';
+    if (toneLabel) toneLabel.textContent = 'Tone: Formal Referral Request';
+  } else {
+    coldBtn.className = 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-primary bg-primary text-white';
+    refBtn.className  = 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-outline-variant bg-surface-container text-on-surface-variant';
+    if (toneLabel) toneLabel.textContent = 'Tone: Professional Cold Outreach';
+  }
+}
+
+async function generateEmail(){
+  const contactName  = document.getElementById('oe-name').value.trim();
+  const titleCompany = document.getElementById('oe-title-company').value.trim();
+  const emailTo      = document.getElementById('oe-email').value.trim();
+  const jobTitle     = document.getElementById('oe-job-title').value.trim();
+  const jobDesc      = document.getElementById('oe-job-desc').value.trim();
+
+  if (!contactName || !jobTitle) { showToast('Contact Name and Job Title are required.','error'); return; }
+
+  const btn = document.getElementById('oe-draft-btn');
+  btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Generating...`;
+  btn.disabled = true;
+
+  const companyName    = titleCompany.includes(' at ') ? titleCompany.split(' at ').pop().trim() : titleCompany;
+  const recipientTitle = titleCompany.includes(' at ') ? titleCompany.split(' at ')[0].trim() : 'Hiring Manager';
+  const subject        = currentEmailType === 'referral'
+    ? `Referral Request - ${jobTitle} at ${companyName}`
+    : `${jobTitle} Opportunity - ${CFG.name}`;
+
+  try {
+    // ── Send raw data to n8n — resume & prompts live inside the workflow ──
+    const result = await callN8N('generate-outreach-email', {
+      contact_name:     contactName,
+      recipient_title:  recipientTitle,
+      company:          companyName,
+      job_title:        jobTitle,
+      job_desc:         jobDesc,
+      email_type:       currentEmailType,   // "referral" or "cold"
+      sender_name:      CFG.name,
+      sender_title:     CFG.title,
+      sender_email:     CFG.email,
+      sender_phone:     CFG.phone,
+      sender_website:   CFG.website
+    });
+
+    const body = result.email || result.output || result.text || '';
+    if (!body) throw new Error('n8n returned an empty response. Check your workflow is active.');
+
+    // Render
+    document.getElementById('oe-to-display').textContent = emailTo || contactName;
+    document.getElementById('oe-subject').value = subject;
+
+    const paragraphs = body.split('\n').filter(l => l.trim());
+    const bodyEl = document.getElementById('oe-body');
+    bodyEl.innerHTML =
+      paragraphs.map(p => `<p style="margin-bottom:1em">${p}</p>`).join('') +
+      `<p style="margin-top:1.5em">Warm regards,<br>
+       <strong>${CFG.name}</strong><br>
+       <span style="color:#464555;font-size:12px">${CFG.title}</span><br>
+       <span style="color:#464555;font-size:12px">${CFG.email} &nbsp;|&nbsp; ${CFG.phone} &nbsp;|&nbsp; ${CFG.website}</span>
+       </p>`;
+
+    updateWordCount();
+    showToast(`${currentEmailType === 'referral' ? 'Referral request' : 'Outreach email'} generated!`);
+
+  } catch(err) {
+    showToast(err.message, 'error');
+  } finally {
+    btn.innerHTML = `<span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">auto_awesome</span> Generate Email`;
+    btn.disabled = false;
+  }
+}
+
+async function findContact(){
+  const nameVal = document.getElementById('oe-name').value.trim();
+  const titleCompany = document.getElementById('oe-title-company').value.trim();
+
+  if(!nameVal){ showToast('Enter a contact name first.','error'); return; }
+  if(!CFG.hunter_key){ showToast('Hunter.io API key not configured. Add it in Settings.','error'); return; }
+
+  const btn = document.getElementById('oe-find-btn');
+  btn.textContent='Searching...'; btn.disabled=true;
+
+  try {
+    // Extract domain from company name
+    const companyPart = titleCompany.includes(' at ') ? titleCompany.split(' at ')[1].trim() : titleCompany.trim();
+    const parts = nameVal.split(' ');
+    const firstName = parts[0];
+    const lastName = parts.slice(1).join(' ') || '';
+    const domain = companyPart.toLowerCase().replace(/\s+/g,'')+'.com';
+
+    const url = `https://api.hunter.io/v2/email-finder?domain=${encodeURIComponent(domain)}&first_name=${encodeURIComponent(firstName)}&last_name=${encodeURIComponent(lastName)}&api_key=${CFG.hunter_key}`;
+    const resp = await fetch(url);
+    const data = await resp.json();
+
+    if(data.data?.email){
+      const email = data.data.email;
+      const confidence = data.data.score || 0;
+      document.getElementById('oe-email').value = email;
+      document.getElementById('oe-to-display').textContent = email;
+      document.getElementById('oe-lookup-result').style.cssText = '';
+      document.getElementById('oe-lookup-empty').style.display = 'none';
+      document.getElementById('oe-lookup-avatar').textContent = (firstName[0]+(lastName[0]||'')).toUpperCase();
+      document.getElementById('oe-lookup-name').textContent = nameVal;
+      document.getElementById('oe-lookup-score').textContent = `${confidence}% Match`;
+      document.getElementById('oe-lookup-email').textContent = email;
+      showToast(`Email found: ${email}`);
+    } else {
+      showToast(data.errors?.[0]?.details || 'No email found for this contact.','error');
+    }
+  } catch(err){
+    showToast('Hunter.io lookup failed: '+err.message,'error');
+  } finally {
+    btn.textContent='Find Contact'; btn.disabled=false;
+  }
+}
+
+document.getElementById('oe-draft-btn').addEventListener('click', generateEmail);
+document.getElementById('oe-find-btn').addEventListener('click', findContact);
+document.getElementById('oe-gmail-connect').addEventListener('click', initGoogleAuth);
+document.getElementById('oe-draft-save-btn').addEventListener('click', saveGmailDraft);
+
+// Restore Gmail connection state on page load
+window.addEventListener('load', () => {
+  const stored = getStoredToken();
+  if (stored) { gmailAccessToken = stored; updateGmailUI(); }
+});
+
+document.getElementById('oe-copy-btn').addEventListener('click',()=>{
+  const subj = document.getElementById('oe-subject').value;
+  const body = document.getElementById('oe-body').innerText;
+  const full = `Subject: ${subj}\n\n${body}`;
+  navigator.clipboard.writeText(full).then(()=>showToast('Email copied!')).catch(()=>showToast('Copy failed','error'));
+});
+
+document.getElementById('oe-send-btn').addEventListener('click',()=>{
+  const to = document.getElementById('oe-email').value||document.getElementById('oe-to-display').textContent;
+  const subj = document.getElementById('oe-subject').value;
+  const body = document.getElementById('oe-body').innerText;
+  if(!to || to==='—'){ showToast('Enter an email address first.','error'); return; }
+  const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+});
+
+document.getElementById('oe-body').addEventListener('input', updateWordCount);
+
+// Init
+const p=CFG.name.split(' ');
+document.getElementById('avatar-initials').textContent=(p[0][0]+(p[1]?.[0]||'')).toUpperCase();
+</script>
+
+<script src="chatbot.js"></script>
+</body>
+</html>

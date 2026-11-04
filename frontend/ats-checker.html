@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="config.js"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JobSuite | ATS Checker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#d3e4fe","on-secondary-container":"#54647a","on-tertiary-fixed-variant":"#004c6e","surface-container-high":"#e6e8ea","secondary":"#505f76","on-background":"#191c1e","outline-variant":"#c7c4d8","on-error-container":"#93000a","surface-variant":"#e0e3e5","inverse-primary":"#c3c0ff","tertiary-fixed":"#c9e6ff","surface-container":"#eceef0","on-error":"#ffffff","tertiary-fixed-dim":"#89ceff","error-container":"#ffdad6","background":"#f7f9fb","surface":"#f7f9fb","primary-fixed-dim":"#c3c0ff","secondary-fixed-dim":"#b7c8e1","on-primary-fixed":"#0f0069","surface-container-lowest":"#ffffff","on-secondary":"#ffffff","on-secondary-fixed":"#0b1c30","on-tertiary":"#ffffff","error":"#ba1a1a","inverse-on-surface":"#eff1f3","on-primary":"#ffffff","primary-container":"#4f46e5","surface-dim":"#d8dadc","on-primary-fixed-variant":"#3323cc","tertiary":"#004d70","outline":"#777587","on-surface":"#191c1e","inverse-surface":"#2d3133","on-secondary-fixed-variant":"#38485d","surface-container-low":"#f2f4f6","tertiary-container":"#006693","surface-container-highest":"#e0e3e5","secondary-container":"#d0e1fb","on-primary-container":"#dad7ff","surface-bright":"#f7f9fb","primary-fixed":"#e2dfff","on-tertiary-fixed":"#001e2f","on-surface-variant":"#464555","surface-tint":"#4d44e3","on-tertiary-container":"#b8e0ff","primary":"#3525cd"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"topbar_height":"52px","stack_gap":"12px","sidebar_width":"200px","gutter":"24px","container_max_width":"1200px","margin_mobile":"16px"},"fontFamily":{"h2":["Inter"],"label-sm":["Inter"],"h1":["Inter"],"body":["Inter"],"body-sm":["Inter"],"label-caps":["Inter"]},"fontSize":{"h2":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0px","fontWeight":"500"}],"h1":["20px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}],"body":["13px",{"lineHeight":"20px","letterSpacing":"0px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0px","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"600"}]}}}}
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #e0e3e5; border-radius: 10px; }
+  .circular-progress { background: radial-gradient(closest-side, white 79%, transparent 80% 100%), conic-gradient(var(--score-color,#3525cd) var(--score-pct,82%), #d0e1fb 0); }
+</style>
+</head>
+<body class="bg-background font-body text-on-surface">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-[200px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 z-50 overflow-y-auto">
+  <div class="mb-6"><h1 class="font-h1 text-h1 text-primary">JobSuite</h1><p class="text-on-surface-variant font-label-sm">AI-Powered Career</p></div>
+  <div class="flex-1 space-y-6">
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Main</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Dashboard</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="job-board.html"><span class="material-symbols-outlined">work</span><span>Job Board</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-primary rounded-lg font-h2 transition-all duration-200" href="ats-checker.html"><span class="material-symbols-outlined">fact_check</span><span class="font-medium">ATS Checker</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="cover-letter.html"><span class="material-symbols-outlined">description</span><span>Cover Letter</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">AI Tools</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="outreach-email.html"><span class="material-symbols-outlined">mail</span><span>Outreach Email</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="linkedin-note.html"><span class="material-symbols-outlined">share</span><span>LinkedIn Note</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="resume-generator.html"><span class="material-symbols-outlined">badge</span><span>Resume Tailor</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Data</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="contacts.html"><span class="material-symbols-outlined">contacts</span><span>Contacts</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="remote-jobs.html"><span class="material-symbols-outlined">public</span><span>Remote Jobs</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="mt-auto pt-4 border-t border-outline-variant">
+    <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="settings.html"><span class="material-symbols-outlined">settings</span><span>Settings</span></a>
+  </div>
+</aside>
+
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 h-[52px] w-[calc(100%-200px)] bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-gutter z-40">
+  <div class="flex items-center gap-4 w-1/3">
+    <div class="relative w-full">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+      <input class="w-full bg-surface-container-low border-none rounded-full py-1.5 pl-10 pr-4 text-body focus:ring-2 focus:ring-primary" placeholder="Search templates, jobs..." type="text"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface-variant">sensors</span></button>
+    <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant bg-secondary-container flex items-center justify-center text-primary font-bold text-xs" id="avatar-initials">LV</div>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="ml-[200px] mt-[52px] p-gutter">
+  <div class="max-w-container_max_width mx-auto">
+    <div class="mb-8">
+      <h2 class="font-h1 text-h1 text-on-surface mb-1">ATS Optimization Checker</h2>
+      <p class="text-on-surface-variant font-body">Compare your resume against any job description to find critical gaps and boost your ranking.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Left: Inputs -->
+      <div class="lg:col-span-1 flex flex-col gap-6">
+        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-5 shadow-sm">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-primary">work_outline</span>
+            <h3 class="font-h2 text-h2 text-on-surface">Job Description</h3>
+          </div>
+          <textarea class="w-full h-48 bg-background border border-outline-variant rounded-xl p-4 text-body focus:ring-2 focus:ring-primary focus:border-transparent resize-none" id="ats-jd" placeholder="Paste the full job description here..."></textarea>
+        </div>
+        <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-5 shadow-sm">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-primary">article</span>
+            <h3 class="font-h2 text-h2 text-on-surface">Your Resume</h3>
+          </div>
+          <textarea class="w-full h-64 bg-background border border-outline-variant rounded-xl p-4 text-body focus:ring-2 focus:ring-primary focus:border-transparent resize-none" id="ats-resume" placeholder="Paste your current resume text here..."></textarea>
+        </div>
+        <button class="w-full py-4 bg-primary text-on-primary rounded-xl font-h2 shadow-md hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" id="ats-analyze-btn">
+          <span>Analyze Resume</span>
+          <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- Right: Results -->
+      <div class="lg:col-span-2">
+        <div class="bg-surface-container-lowest rounded-xl border-2 border-primary p-8 shadow-md h-full" id="ats-results">
+          <div class="flex flex-col items-center mb-10">
+            <div class="relative w-40 h-40 circular-progress rounded-full flex items-center justify-center mb-4 transition-all duration-700 hover:scale-105" id="ats-ring">
+              <div class="text-center">
+                <span class="block font-h1 text-[42px] text-primary" id="ats-score">—%</span>
+                <span class="text-label-caps text-on-surface-variant uppercase tracking-widest">Match Score</span>
+              </div>
+            </div>
+            <div class="px-4 py-1.5 bg-[#ecfdf5] border border-[#10b981] rounded-full text-[#065f46] font-h2 text-body-sm flex items-center gap-2" id="ats-match-label">
+              <span class="material-symbols-outlined text-[18px]">check_circle</span> Paste JD and Resume above
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div>
+              <h4 class="font-h2 text-h2 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[#10b981]">task_alt</span> Matched Keywords</h4>
+              <div class="flex flex-wrap gap-2" id="ats-matched">
+                <span class="px-3 py-1 bg-[#ecfdf5] text-[#065f46] border border-[#10b981]/20 rounded-full text-body-sm font-medium">React.js</span>
+                <span class="px-3 py-1 bg-[#ecfdf5] text-[#065f46] border border-[#10b981]/20 rounded-full text-body-sm font-medium">TypeScript</span>
+                <span class="px-3 py-1 bg-[#ecfdf5] text-[#065f46] border border-[#10b981]/20 rounded-full text-body-sm font-medium">Agile</span>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-h2 text-h2 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-error">cancel</span> Missing Keywords</h4>
+              <div class="flex flex-wrap gap-2" id="ats-missing">
+                <span class="px-3 py-1 bg-error-container text-on-error-container border border-error/20 rounded-full text-body-sm font-medium">SQL Optimization</span>
+                <span class="px-3 py-1 bg-error-container text-on-error-container border border-error/20 rounded-full text-body-sm font-medium">Kubernetes</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="bg-primary-fixed-dim p-2 rounded-lg"><span class="material-symbols-outlined text-primary">psychology</span></div>
+              <h4 class="font-h1 text-h1 text-on-surface">AI Optimization Suggestions</h4>
+            </div>
+            <ul class="space-y-4" id="ats-suggestions-list">
+              <li class="flex gap-4"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span><p class="text-body text-on-surface-variant"><strong class="text-on-surface">Quantify achievements:</strong> Instead of "managed a team," try "Managed a team of 10+ engineers, increasing sprint velocity by 24%."</p></li>
+              <li class="flex gap-4"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span><p class="text-body text-on-surface-variant"><strong class="text-on-surface">Add missing keywords</strong> from the job description to improve ATS ranking.</p></li>
+              <li class="flex gap-4"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span><p class="text-body text-on-surface-variant"><strong class="text-on-surface">Improve Action Verbs:</strong> Swap passive language with "Spearheaded," "Architected," or "Optimized."</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats footer -->
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[20px]">history</span></div>
+        <div><p class="text-label-sm text-on-surface-variant">Scans Today</p><p class="font-h2 text-h2" id="scans-today">0 / ∞</p></div>
+      </div>
+      <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[20px]">trending_up</span></div>
+        <div><p class="text-label-sm text-on-surface-variant">Avg Score</p><p class="font-h2 text-h2" id="avg-score">—%</p></div>
+      </div>
+      <div class="p-4 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm flex items-center gap-4">
+        <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center"><span class="material-symbols-outlined text-primary text-[20px]">bookmark</span></div>
+        <div><p class="text-label-sm text-on-surface-variant">Saved Jobs</p><p class="font-h2 text-h2">—</p></div>
+      </div>
+      <div class="p-4 bg-primary text-on-primary rounded-xl shadow-sm flex items-center gap-4 cursor-pointer hover:opacity-90 transition-all" onclick="window.location.href='settings.html'">
+        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"><span class="material-symbols-outlined text-white text-[20px]">auto_awesome</span></div>
+        <div><p class="text-label-sm opacity-80 text-white">Powered By</p><p class="font-h2 text-h2">Groq AI (Free)</p></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="fixed bottom-8 right-8 bg-on-surface text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 translate-y-24 opacity-0 transition-all duration-300 z-50" id="toast">
+  <span class="material-symbols-outlined text-emerald-400">check_circle</span>
+  <p class="font-body font-medium" id="toast-msg"></p>
+</div>
+
+<script>
+const CFG = {
+  get n8n()    { const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_n8n_url')||EC.n8n_url||'http://localhost:5678/webhook'; },
+  get name()   { return localStorage.getItem('js_user_name')||'Litheesh Velakaturi Rambabu'; },
+};
+
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast'),m=document.getElementById('toast-msg');
+  if(!t||!m) return; m.textContent=msg;
+  const ic=t.querySelector('.material-symbols-outlined');
+  if(ic){ic.textContent=type==='error'?'error':'check_circle';ic.className=`material-symbols-outlined ${type==='error'?'text-red-400':'text-emerald-400'}`;}
+  t.classList.remove('translate-y-24','opacity-0'); t.classList.add('translate-y-0','opacity-100');
+  setTimeout(()=>{t.classList.remove('translate-y-0','opacity-100');t.classList.add('translate-y-24','opacity-0');},4000);
+}
+
+// ─── ALL AI CALLS GO THROUGH n8n — resume lives in the workflow ───
+async function callN8N(endpoint, payload){
+  const url = `${CFG.n8n}/${endpoint}`;
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!r.ok) {
+    const errText = await r.text().catch(()=>'');
+    throw new Error(`n8n error ${r.status}${errText ? ': '+errText : '. Is n8n running?'}`);
+  }
+  return await r.json();
+}
+
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+let scanCount = 0;
+const avgScores = [];
+
+document.getElementById('ats-analyze-btn').addEventListener('click', async()=>{
+  const jd             = document.getElementById('ats-jd').value.trim();
+  const resumeOverride = document.getElementById('ats-resume').value.trim(); // optional paste
+  if(!jd){ showToast('Please paste a job description.','error'); return; }
+
+  const btn = document.getElementById('ats-analyze-btn');
+  btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-white mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg><span>Analyzing...</span>`;
+  btn.disabled = true;
+
+  try {
+    // ── Send to n8n — resume stored inside the workflow ──
+    // If user pastes a resume override, send it so n8n uses that version instead
+    const data = await callN8N('check-ats', {
+      job_description:  jd,
+      resume_override:  resumeOverride  // empty string = n8n uses stored resume
+    });
+
+    const score = Math.min(100, Math.max(0, parseInt(data.score)||0));
+    scanCount++;
+    avgScores.push(score);
+    document.getElementById('scans-today').textContent = `${scanCount} scan${scanCount===1?'':'s'}`;
+    document.getElementById('avg-score').textContent = Math.round(avgScores.reduce((a,b)=>a+b,0)/avgScores.length)+'%';
+
+    // Score ring CSS var
+    const ring = document.getElementById('ats-ring');
+    ring.style.setProperty('--score-pct', `${score}%`);
+    const color = score>=70?'#3525cd':score>=50?'#f59e0b':'#ba1a1a';
+    ring.style.setProperty('--score-color', color);
+    document.getElementById('ats-score').textContent = `${score}%`;
+    document.getElementById('ats-score').style.color = color;
+
+    // Match label
+    const label = document.getElementById('ats-match-label');
+    const labelText = score>=70?'Good Match':score>=50?'Partial Match':'Poor Match';
+    const labelStyle = score>=70?'bg-[#ecfdf5] border-[#10b981] text-[#065f46]':score>=50?'bg-amber-50 border-amber-300 text-amber-700':'bg-error-container border-error/30 text-on-error-container';
+    label.className = `px-4 py-1.5 ${labelStyle} rounded-full font-h2 text-body-sm flex items-center gap-2`;
+    label.innerHTML = `<span class="material-symbols-outlined text-[18px]">${score>=70?'check_circle':score>=50?'warning':'cancel'}</span>${labelText} — ${score}% Match`;
+
+    // Matched keywords
+    document.getElementById('ats-matched').innerHTML = (data.matched_keywords||[]).map(k=>
+      `<span class="px-3 py-1 bg-[#ecfdf5] text-[#065f46] border border-[#10b981]/20 rounded-full text-body-sm font-medium">${escHtml(k)}</span>`
+    ).join('');
+
+    // Missing keywords
+    document.getElementById('ats-missing').innerHTML = (data.missing_keywords||[]).map(k=>
+      `<span class="px-3 py-1 bg-error-container text-on-error-container border border-error/20 rounded-full text-body-sm font-medium">${escHtml(k)}</span>`
+    ).join('');
+
+    // Suggestions
+    document.getElementById('ats-suggestions-list').innerHTML = (data.suggestions||[]).map(s=>
+      `<li class="flex gap-4"><span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0"></span><p class="text-body text-on-surface-variant">${escHtml(s)}</p></li>`
+    ).join('');
+
+    showToast(`Analysis complete! ATS Score: ${score}%`);
+  } catch(err) {
+    showToast(err.message,'error');
+  } finally {
+    btn.innerHTML = `<span>Analyze Resume</span><span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>`;
+    btn.disabled = false;
+  }
+});
+
+// Resume is stored in n8n — textarea is for optional paste/override only
+
+// Avatar
+const p=CFG.name.split(' ');
+document.getElementById('avatar-initials').textContent=(p[0][0]+(p[1]?.[0]||'')).toUpperCase();
+
+// Check for JD passed from remote-jobs page
+const params = new URLSearchParams(window.location.search);
+if(params.get('jd')) document.getElementById('ats-jd').value = decodeURIComponent(params.get('jd'));
+</script>
+
+<script src="chatbot.js"></script>
+</body>
+</html>

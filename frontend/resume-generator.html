@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="config.js"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JobSuite | AI Resume Tailor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;display:inline-block;line-height:1;text-transform:none;letter-spacing:normal;word-wrap:normal;white-space:nowrap;direction:ltr;}
+  body{font-family:'Inter',sans-serif;background-color:#f7f9fb;}
+  .editor-container::-webkit-scrollbar{width:6px;}
+  .editor-container::-webkit-scrollbar-thumb{background-color:#e2e8f0;border-radius:10px;}
+  #rg-editor{outline:none;min-height:480px;white-space:pre-wrap;word-break:break-word;}
+  #rg-editor:empty::before{content:'Your tailored resume will appear here...';color:#9ca3af;font-style:italic;}
+</style>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{"colors":{"secondary-fixed":"#d3e4fe","on-secondary-container":"#54647a","on-tertiary-fixed-variant":"#004c6e","surface-container-high":"#e6e8ea","secondary":"#505f76","on-background":"#191c1e","outline-variant":"#c7c4d8","on-error-container":"#93000a","surface-variant":"#e0e3e5","inverse-primary":"#c3c0ff","tertiary-fixed":"#c9e6ff","surface-container":"#eceef0","on-error":"#ffffff","tertiary-fixed-dim":"#89ceff","error-container":"#ffdad6","background":"#f7f9fb","surface":"#f7f9fb","primary-fixed-dim":"#c3c0ff","secondary-fixed-dim":"#b7c8e1","on-primary-fixed":"#0f0069","surface-container-lowest":"#ffffff","on-secondary":"#ffffff","on-secondary-fixed":"#0b1c30","on-tertiary":"#ffffff","error":"#ba1a1a","inverse-on-surface":"#eff1f3","on-primary":"#ffffff","primary-container":"#4f46e5","surface-dim":"#d8dadc","on-primary-fixed-variant":"#3323cc","tertiary":"#004d70","outline":"#777587","on-surface":"#191c1e","inverse-surface":"#2d3133","on-secondary-fixed-variant":"#38485d","surface-container-low":"#f2f4f6","tertiary-container":"#006693","surface-container-highest":"#e0e3e5","secondary-container":"#d0e1fb","on-primary-container":"#dad7ff","surface-bright":"#f7f9fb","primary-fixed":"#e2dfff","on-tertiary-fixed":"#001e2f","on-surface-variant":"#464555","surface-tint":"#4d44e3","on-tertiary-container":"#b8e0ff","primary":"#3525cd"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"topbar_height":"52px","stack_gap":"12px","sidebar_width":"200px","gutter":"24px","container_max_width":"1200px","margin_mobile":"16px"},"fontFamily":{"h2":["Inter"],"label-sm":["Inter"],"h1":["Inter"],"body":["Inter"],"body-sm":["Inter"],"label-caps":["Inter"]},"fontSize":{"h2":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0px","fontWeight":"500"}],"h1":["20px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}],"body":["13px",{"lineHeight":"20px","letterSpacing":"0px","fontWeight":"400"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0px","fontWeight":"400"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"600"}]}}}}
+</script>
+</head>
+<body class="bg-background text-on-surface antialiased">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-[200px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 gap-stack_gap z-50 overflow-y-auto">
+  <div class="flex flex-col gap-1 mb-6 shrink-0"><h1 class="font-h1 text-h1 text-primary">JobSuite</h1><p class="font-label-sm text-label-sm text-on-surface-variant">AI-Powered Career</p></div>
+  <div class="flex-1 space-y-6">
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Main</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="dashboard.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body text-body">Dashboard</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="job-board.html"><span class="material-symbols-outlined text-[20px]">work</span><span class="font-body text-body">Job Board</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="ats-checker.html"><span class="material-symbols-outlined text-[20px]">fact_check</span><span class="font-body text-body">ATS Checker</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="cover-letter.html"><span class="material-symbols-outlined text-[20px]">description</span><span class="font-body text-body">Cover Letter</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">AI Tools</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="outreach-email.html"><span class="material-symbols-outlined text-[20px]">mail</span><span class="font-body text-body">Outreach Email</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="linkedin-note.html"><span class="material-symbols-outlined text-[20px]">share</span><span class="font-body text-body">LinkedIn Note</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-primary rounded-lg font-h2 cursor-pointer" href="resume-generator.html"><span class="material-symbols-outlined text-[20px]">badge</span><span class="font-h2 text-h2">Resume Tailor</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Data</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="contacts.html"><span class="material-symbols-outlined text-[20px]">contacts</span><span class="font-body text-body">Contacts</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="remote-jobs.html"><span class="material-symbols-outlined text-[20px]">public</span><span class="font-body text-body">Remote Jobs</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="mt-auto pt-4 border-t border-outline-variant shrink-0">
+    <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container transition-all duration-200 rounded-lg cursor-pointer" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body text-body">Settings</span></a>
+  </div>
+</aside>
+
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 h-[52px] w-[calc(100%-200px)] bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-gutter z-40">
+  <div class="flex items-center gap-4 flex-1">
+    <div class="relative w-full max-w-md">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+      <input class="w-full bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-body font-body focus:ring-2 focus:ring-primary/20 placeholder:text-outline" placeholder="Search templates or applications..." type="text"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface-variant">sensors</span></button>
+    <div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant text-primary font-bold text-xs">LV</div>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="ml-[200px] pt-[52px] min-h-screen">
+  <div class="max-w-[1200px] mx-auto p-gutter">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+      <!-- Left: Input Form -->
+      <section class="lg:col-span-1 space-y-6">
+        <div class="flex flex-col gap-1">
+          <h2 class="font-h1 text-h1 text-on-surface">Resume Tailor</h2>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">AI tailors your stored resume to perfectly match any job description.</p>
+        </div>
+
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm space-y-4">
+          <div class="space-y-1.5">
+            <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Job Title *</label>
+            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg font-body text-body focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="rg-job-title" type="text" placeholder="e.g. ML Engineer"/>
+          </div>
+          <div class="space-y-1.5">
+            <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Company Name *</label>
+            <input class="w-full px-3 py-2 border border-outline-variant rounded-lg font-body text-body focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" id="rg-company" type="text" placeholder="e.g. Google"/>
+          </div>
+          <div class="space-y-1.5">
+            <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Job Description *</label>
+            <textarea class="w-full px-3 py-2 border border-outline-variant rounded-lg font-body text-body focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none" id="rg-jd" rows="8" placeholder="Paste the full job description here. The AI uses this to match your skills and keywords exactly."></textarea>
+          </div>
+          <div class="space-y-1.5">
+            <label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Output Format</label>
+            <div class="flex gap-2">
+              <button id="fmt-standard" onclick="setFormat('standard')" class="flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-primary bg-primary text-white">Standard</button>
+              <button id="fmt-compact" onclick="setFormat('compact')" class="flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-outline-variant bg-surface-container text-on-surface-variant">Compact</button>
+            </div>
+          </div>
+
+          <button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2.5 px-4 rounded-xl font-h2 text-h2 hover:bg-primary/90 transition-all active:scale-95" id="rg-generate-btn">
+            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
+            Tailor My Resume
+          </button>
+        </div>
+
+        <!-- Info card -->
+        <div class="bg-secondary-container/40 border border-secondary-fixed rounded-xl p-4 space-y-2">
+          <div class="flex items-center gap-2 text-primary">
+            <span class="material-symbols-outlined text-[18px]">info</span>
+            <span class="font-h2 text-h2">How it works</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">Your base resume is stored in your n8n workflow. The AI reads the job description, identifies required keywords and skills, then rewrites your resume sections to maximize ATS match — while keeping everything truthful to your actual experience.</p>
+          <p class="font-body-sm text-body-sm text-primary font-semibold">To update your resume: open n8n → Workflow 14 → Code node → edit RESUME text → Save.</p>
+        </div>
+      </section>
+
+      <!-- Right: Output -->
+      <section class="lg:col-span-2 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="font-h1 text-h1 text-on-surface">Tailored Resume</h2>
+            <p class="font-body-sm text-body-sm text-on-surface-variant" id="rg-word-count">0 words</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="rg-copy-btn" class="flex items-center gap-1.5 px-3 py-1.5 text-on-surface-variant hover:bg-surface-container border border-outline-variant rounded-lg font-body-sm text-body-sm transition-colors">
+              <span class="material-symbols-outlined text-[16px]">content_copy</span>Copy
+            </button>
+            <button id="rg-download-btn" class="flex items-center gap-1.5 px-3 py-1.5 text-on-surface-variant hover:bg-surface-container border border-outline-variant rounded-lg font-body-sm text-body-sm transition-colors">
+              <span class="material-symbols-outlined text-[16px]">download</span>Download
+            </button>
+            <button id="rg-regen-btn" class="flex items-center gap-1.5 px-3 py-1.5 text-primary hover:bg-primary/10 border border-primary/30 rounded-lg font-body-sm text-body-sm transition-colors">
+              <span class="material-symbols-outlined text-[16px]">refresh</span>Regenerate
+            </button>
+          </div>
+        </div>
+
+        <!-- Resume Paper -->
+        <div class="bg-white border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+          <!-- Paper header bar -->
+          <div class="flex items-center justify-between px-5 py-3 border-b border-outline-variant bg-surface-container-low">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-primary">badge</span>
+              <span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Resume Preview</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-amber-400/60"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-emerald-400/60"></div>
+            </div>
+          </div>
+
+          <!-- Editable resume content -->
+          <div class="editor-container overflow-y-auto" style="max-height:680px;">
+            <div contenteditable="true" id="rg-editor"
+              class="p-8 font-body text-body text-on-surface leading-relaxed">
+            </div>
+          </div>
+        </div>
+
+        <!-- ATS tip -->
+        <div class="bg-surface-container-low border border-outline-variant rounded-xl p-4 flex items-start gap-3">
+          <span class="material-symbols-outlined text-[20px] text-primary mt-0.5">tips_and_updates</span>
+          <div>
+            <p class="font-h2 text-h2 text-on-surface">After generating</p>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Run the tailored resume through ATS Checker with the same job description to verify your match score improved. Aim for 75%+.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-24 opacity-0 transition-all duration-300 z-[200] flex items-center gap-3 bg-inverse-surface text-inverse-on-surface px-5 py-3 rounded-2xl shadow-xl">
+  <span class="material-symbols-outlined text-emerald-400" id="toast-icon">check_circle</span>
+  <span class="font-body text-body" id="toast-msg"></span>
+</div>
+
+<!-- FAB -->
+<div class="fixed bottom-24 right-6">
+  <button class="bg-primary text-on-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform active:scale-95 group" onclick="generateResume()">
+    <span class="material-symbols-outlined text-[22px]">refresh</span>
+    <div class="absolute right-14 bg-inverse-surface text-inverse-on-surface px-3 py-1.5 rounded-lg font-label-sm text-label-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">Regenerate</div>
+  </button>
+</div>
+
+<script>
+const CFG = {
+  get n8n()     { const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_n8n_url')||EC.n8n_url||'http://localhost:5678/webhook'; },
+  get name()    { return localStorage.getItem('js_user_name')||'Litheesh Velakaturi Rambabu'; },
+  get email()   { return localStorage.getItem('js_user_email')||'vrlitheesh2002@gmail.com'; },
+  get phone()   { return localStorage.getItem('js_user_phone')||'+1 (716) 368-9971'; },
+  get website() { return localStorage.getItem('js_user_website')||'litheesh.com'; },
+  get title()   { return localStorage.getItem('js_user_title')||'AI & ML Engineer'; },
+};
+
+function showToast(msg, type='success'){
+  const t=document.getElementById('toast'), m=document.getElementById('toast-msg'), ic=document.getElementById('toast-icon');
+  if(!t||!m) return;
+  m.textContent = msg;
+  if(ic){ ic.textContent=type==='error'?'error':'check_circle'; ic.className=`material-symbols-outlined ${type==='error'?'text-red-400':'text-emerald-400'}`; }
+  t.classList.remove('translate-y-24','opacity-0'); t.classList.add('translate-y-0','opacity-100');
+  setTimeout(()=>{ t.classList.remove('translate-y-0','opacity-100'); t.classList.add('translate-y-24','opacity-0'); }, 4000);
+}
+
+function updateWordCount(){
+  const text = document.getElementById('rg-editor').innerText.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  document.getElementById('rg-word-count').textContent = `${words} words`;
+}
+
+// ─── ALL AI CALLS GO THROUGH n8n — resume lives in the workflow ───
+async function callN8N(endpoint, payload){
+  const url = `${CFG.n8n}/${endpoint}`;
+  const r = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!r.ok) {
+    const errText = await r.text().catch(()=>'');
+    throw new Error(`n8n error ${r.status}${errText ? ': '+errText : '. Is n8n running?'}`);
+  }
+  return await r.json();
+}
+
+let currentFormat = 'standard';
+function setFormat(fmt) {
+  currentFormat = fmt;
+  document.getElementById('fmt-standard').className = fmt === 'standard'
+    ? 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-primary bg-primary text-white'
+    : 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-outline-variant bg-surface-container text-on-surface-variant';
+  document.getElementById('fmt-compact').className = fmt === 'compact'
+    ? 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-primary bg-primary text-white'
+    : 'flex-1 py-2 rounded-xl text-[12px] font-semibold transition-all border border-outline-variant bg-surface-container text-on-surface-variant';
+}
+
+async function generateResume(){
+  const jobTitle = document.getElementById('rg-job-title').value.trim();
+  const company  = document.getElementById('rg-company').value.trim();
+  const jd       = document.getElementById('rg-jd').value.trim();
+
+  if(!jobTitle || !company){ showToast('Job Title and Company are required.','error'); return; }
+  if(!jd){ showToast('Please paste the job description.','error'); return; }
+
+  const btn = document.getElementById('rg-generate-btn');
+  btn.innerHTML = `<svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Tailoring...`;
+  btn.disabled = true;
+
+  try {
+    // ── Send to n8n — base resume is stored inside the workflow ──
+    const result = await callN8N('generate-resume', {
+      job_title:       jobTitle,
+      company:         company,
+      job_description: jd,
+      format:          currentFormat,   // "standard" or "compact"
+      sender_name:     CFG.name,
+      sender_title:    CFG.title,
+      sender_email:    CFG.email,
+      sender_phone:    CFG.phone,
+      sender_website:  CFG.website
+    });
+
+    const resumeText = result.resume || result.output || result.text || '';
+    if(!resumeText) throw new Error('n8n returned empty. Check your workflow is active.');
+
+    // Render: convert plain text sections into styled HTML
+    const editor = document.getElementById('rg-editor');
+    const lines = resumeText.split('\n');
+    let html = '';
+    for(const line of lines){
+      const trimmed = line.trim();
+      if(!trimmed){ html += '<br/>'; continue; }
+      // Section headers (ALL CAPS lines or lines ending with :)
+      if(/^[A-Z][A-Z\s&\/]+$/.test(trimmed) || /^[A-Z][A-Z\s]+:$/.test(trimmed)){
+        html += `<p style="font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.05em;color:#3525cd;border-bottom:1px solid #c7c4d8;padding-bottom:2px;margin-top:16px;margin-bottom:4px;">${trimmed}</p>`;
+      } else if(trimmed.startsWith('•') || trimmed.startsWith('-')){
+        html += `<p style="padding-left:16px;color:#464555;">${trimmed}</p>`;
+      } else {
+        html += `<p>${trimmed}</p>`;
+      }
+    }
+    editor.innerHTML = html;
+    updateWordCount();
+    showToast('Resume tailored successfully!');
+
+  } catch(err){
+    showToast(err.message, 'error');
+  } finally {
+    btn.innerHTML = `<span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1;">auto_awesome</span> Tailor My Resume`;
+    btn.disabled = false;
+  }
+}
+
+document.getElementById('rg-generate-btn').addEventListener('click', generateResume);
+document.getElementById('rg-regen-btn').addEventListener('click', generateResume);
+
+document.getElementById('rg-copy-btn').addEventListener('click', ()=>{
+  const text = document.getElementById('rg-editor').innerText;
+  if(!text.trim()){ showToast('Nothing to copy yet.','error'); return; }
+  navigator.clipboard.writeText(text).then(()=>showToast('Resume copied!')).catch(()=>showToast('Copy failed','error'));
+});
+
+document.getElementById('rg-download-btn').addEventListener('click', async ()=>{
+  const text = document.getElementById('rg-editor').innerText.trim();
+  if(!text){ showToast('Nothing to download yet.','error'); return; }
+
+  const company  = document.getElementById('rg-company').value || 'draft';
+  const jobTitle = document.getElementById('rg-job-title').value || '';
+  const filename = `resume-${company.toLowerCase().replace(/\s+/g,'-')}`;
+
+  try {
+    const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } = docx;
+
+    const lines = text.split('\n');
+    const docChildren = [];
+
+    // Header: Name block
+    docChildren.push(new Paragraph({
+      children: [new TextRun({ text: CFG.name, bold: true, size: 28, color: '3525CD' })],
+      alignment: AlignmentType.CENTER,
+      spacing: { after: 60 }
+    }));
+    docChildren.push(new Paragraph({
+      children: [new TextRun({ text: `${CFG.title}  |  ${CFG.email}  |  ${CFG.phone}  |  ${CFG.website}`, size: 18, color: '464555' })],
+      alignment: AlignmentType.CENTER,
+      spacing: { after: 200 }
+    }));
+
+    // Parse resume lines
+    for(const line of lines){
+      const trimmed = line.trim();
+      if(!trimmed){ docChildren.push(new Paragraph({ spacing: { after: 80 } })); continue; }
+
+      // Section header: ALL CAPS or ends with colon
+      if(/^[A-Z][A-Z\s&\/]{3,}$/.test(trimmed) || /^[A-Z][A-Z\s]+:$/.test(trimmed)){
+        docChildren.push(new Paragraph({
+          children: [new TextRun({ text: trimmed, bold: true, size: 20, color: '3525CD', allCaps: true })],
+          border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: 'C7C4D8' } },
+          spacing: { before: 240, after: 60 }
+        }));
+      } else if(trimmed.startsWith('•') || trimmed.startsWith('-')){
+        docChildren.push(new Paragraph({
+          children: [new TextRun({ text: trimmed.replace(/^[-•]\s*/, ''), size: 18 })],
+          bullet: { level: 0 },
+          spacing: { after: 40 }
+        }));
+      } else {
+        docChildren.push(new Paragraph({
+          children: [new TextRun({ text: trimmed, size: 18 })],
+          spacing: { after: 60 }
+        }));
+      }
+    }
+
+    const doc = new Document({
+      sections: [{
+        properties: {
+          page: { margin: { top: 720, bottom: 720, left: 900, right: 900 } }
+        },
+        children: docChildren
+      }]
+    });
+
+    const blob = await Packer.toBlob(doc);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${filename}.docx`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('Resume downloaded as .docx!');
+
+  } catch(err){
+    // Fallback to plain text if docx library fails
+    const a = document.createElement('a');
+    a.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text);
+    a.download = `${filename}.txt`;
+    a.click();
+    showToast('Downloaded as .txt (docx library error)','error');
+  }
+});
+
+document.getElementById('rg-editor').addEventListener('input', updateWordCount);
+</script>
+
+<script src="chatbot.js"></script>
+</body>
+</html>

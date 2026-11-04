@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="config.js"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JobSuite Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .chart-bar-glow:hover { filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.4)); }
+</style>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "secondary-fixed": "#d3e4fe","on-secondary-container": "#54647a","on-tertiary-fixed-variant": "#004c6e","surface-container-high": "#e6e8ea",
+          "secondary": "#505f76","on-background": "#191c1e","outline-variant": "#c7c4d8","on-error-container": "#93000a","surface-variant": "#e0e3e5",
+          "inverse-primary": "#c3c0ff","tertiary-fixed": "#c9e6ff","surface-container": "#eceef0","on-error": "#ffffff","tertiary-fixed-dim": "#89ceff",
+          "error-container": "#ffdad6","background": "#f7f9fb","surface": "#f7f9fb","primary-fixed-dim": "#c3c0ff","secondary-fixed-dim": "#b7c8e1",
+          "on-primary-fixed": "#0f0069","surface-container-lowest": "#ffffff","on-secondary": "#ffffff","on-secondary-fixed": "#0b1c30","on-tertiary": "#ffffff",
+          "error": "#ba1a1a","inverse-on-surface": "#eff1f3","on-primary": "#ffffff","primary-container": "#4f46e5","surface-dim": "#d8dadc",
+          "on-primary-fixed-variant": "#3323cc","tertiary": "#004d70","outline": "#777587","on-surface": "#191c1e","inverse-surface": "#2d3133",
+          "on-secondary-fixed-variant": "#38485d","surface-container-low": "#f2f4f6","tertiary-container": "#006693","surface-container-highest": "#e0e3e5",
+          "secondary-container": "#d0e1fb","on-primary-container": "#dad7ff","surface-bright": "#f7f9fb","primary-fixed": "#e2dfff",
+          "on-tertiary-fixed": "#001e2f","on-surface-variant": "#464555","surface-tint": "#4d44e3","on-tertiary-container": "#b8e0ff","primary": "#3525cd"
+        },
+        "borderRadius": {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},
+        "spacing": {"topbar_height": "52px","stack_gap": "12px","sidebar_width": "200px","gutter": "24px","container_max_width": "1200px","margin_mobile": "16px"},
+        "fontFamily": {"h2": ["Inter"],"label-sm": ["Inter"],"h1": ["Inter"],"body": ["Inter"],"body-sm": ["Inter"],"label-caps": ["Inter"]},
+        "fontSize": {
+          "h2": ["16px", {"lineHeight": "24px","letterSpacing": "-0.01em","fontWeight": "600"}],
+          "label-sm": ["11px", {"lineHeight": "16px","letterSpacing": "0px","fontWeight": "500"}],
+          "h1": ["20px", {"lineHeight": "28px","letterSpacing": "-0.02em","fontWeight": "700"}],
+          "body": ["13px", {"lineHeight": "20px","letterSpacing": "0px","fontWeight": "400"}],
+          "body-sm": ["12px", {"lineHeight": "18px","letterSpacing": "0px","fontWeight": "400"}],
+          "label-caps": ["11px", {"lineHeight": "16px","letterSpacing": "0.05em","fontWeight": "600"}]
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-background text-on-surface">
+
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[200px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 gap-4 z-50 overflow-y-auto">
+  <div class="mb-6">
+    <h1 class="font-h1 text-h1 text-primary">JobSuite</h1>
+    <p class="text-on-surface-variant font-body-sm text-body-sm">AI-Powered Career</p>
+  </div>
+  <div class="flex-1 space-y-6">
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Main</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-primary rounded-lg font-h2 transition-all duration-200 active:scale-95" href="dashboard.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="text-body font-medium">Dashboard</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="job-board.html"><span class="material-symbols-outlined text-[20px]">work</span><span>Job Board</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="ats-checker.html"><span class="material-symbols-outlined text-[20px]">fact_check</span><span>ATS Checker</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="cover-letter.html"><span class="material-symbols-outlined text-[20px]">description</span><span>Cover Letter</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">AI Tools</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="outreach-email.html"><span class="material-symbols-outlined text-[20px]">mail</span><span>Outreach Email</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="linkedin-note.html"><span class="material-symbols-outlined text-[20px]">share</span><span>LinkedIn Note</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="resume-generator.html"><span class="material-symbols-outlined text-[20px]">badge</span><span>Resume Tailor</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Data</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="contacts.html"><span class="material-symbols-outlined text-[20px]">contacts</span><span>Contacts</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer active:scale-95" href="remote-jobs.html"><span class="material-symbols-outlined text-[20px]">public</span><span>Remote Jobs</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="mt-auto pt-4 border-t border-outline-variant space-y-1">
+    <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a>
+  </div>
+</aside>
+
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 h-[52px] w-[calc(100%-200px)] bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-gutter z-40 shadow-sm">
+  <div class="flex items-center gap-4 flex-1">
+    <div class="relative w-full max-w-md">
+      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+      <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border-none rounded-xl text-body focus:ring-2 focus:ring-primary transition-all outline-none" placeholder="Search applications..." type="text"/>
+    </div>
+  </div>
+  <div class="flex items-center gap-4">
+    <button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">sensors</button>
+    <div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center overflow-hidden border border-outline-variant text-primary font-bold text-xs" id="avatar-initials">LV</div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="ml-[200px] pt-[52px] min-h-screen p-gutter max-w-[1400px]">
+  <!-- Stat Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-gutter">
+    <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+      <div class="flex justify-between items-start mb-4">
+        <span class="p-2 bg-primary/10 text-primary rounded-lg material-symbols-outlined">send</span>
+        <span class="text-primary font-label-sm text-label-sm flex items-center gap-1">+12% <span class="material-symbols-outlined !text-[14px]">trending_up</span></span>
+      </div>
+      <h3 class="text-on-surface-variant font-label-caps text-label-caps mb-1">TOTAL APPLIED</h3>
+      <p class="text-[32px] font-bold text-on-surface leading-tight" id="stat-total-applied">—</p>
+    </div>
+    <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+      <div class="flex justify-between items-start mb-4">
+        <span class="p-2 bg-amber-100 text-amber-700 rounded-lg material-symbols-outlined">forum</span>
+        <span class="text-amber-700 font-label-sm text-label-sm flex items-center gap-1">+5% <span class="material-symbols-outlined !text-[14px]">trending_up</span></span>
+      </div>
+      <h3 class="text-on-surface-variant font-label-caps text-label-caps mb-1">INTERVIEWS</h3>
+      <p class="text-[32px] font-bold text-on-surface leading-tight" id="stat-interviews">—</p>
+    </div>
+    <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+      <div class="flex justify-between items-start mb-4">
+        <span class="p-2 bg-emerald-100 text-emerald-700 rounded-lg material-symbols-outlined">verified</span>
+        <span class="text-emerald-700 font-label-sm text-label-sm flex items-center gap-1">+2% <span class="material-symbols-outlined !text-[14px]">trending_up</span></span>
+      </div>
+      <h3 class="text-on-surface-variant font-label-caps text-label-caps mb-1">OFFERS</h3>
+      <p class="text-[32px] font-bold text-on-surface leading-tight" id="stat-offers">—</p>
+    </div>
+    <div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow group">
+      <div class="flex justify-between items-start mb-4">
+        <span class="p-2 bg-surface-container text-on-surface-variant rounded-lg material-symbols-outlined">schedule</span>
+        <span class="text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1">8% <span class="material-symbols-outlined !text-[14px]">trending_flat</span></span>
+      </div>
+      <h3 class="text-on-surface-variant font-label-caps text-label-caps mb-1">PENDING</h3>
+      <p class="text-[32px] font-bold text-on-surface leading-tight" id="stat-pending">—</p>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-gutter">
+    <div class="lg:col-span-2 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="font-h2 text-h2">Application Activity</h2>
+        <select class="bg-surface-container-low border-none rounded-lg text-body-sm px-3 py-1 outline-none"><option>Last 30 Days</option><option>Last 3 Months</option></select>
+      </div>
+      <div class="flex items-end justify-between h-[200px] gap-2 px-2">
+        <div class="w-full bg-primary/20 rounded-t-sm h-[40%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/40 rounded-t-sm h-[60%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/60 rounded-t-sm h-[85%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/30 rounded-t-sm h-[50%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/80 rounded-t-sm h-[95%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/40 rounded-t-sm h-[65%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary rounded-t-sm h-[80%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/30 rounded-t-sm h-[45%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/60 rounded-t-sm h-[70%] chart-bar-glow transition-all"></div>
+        <div class="w-full bg-primary/40 rounded-t-sm h-[55%] chart-bar-glow transition-all"></div>
+      </div>
+      <div class="flex justify-between mt-4 text-on-surface-variant font-label-sm text-label-sm">
+        <span>Oct 1</span><span>Oct 10</span><span>Oct 20</span><span>Oct 30</span>
+      </div>
+    </div>
+    <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant shadow-sm">
+      <h2 class="font-h2 text-h2 mb-6">Status Breakdown</h2>
+      <div class="space-y-6" id="status-breakdown">
+        <div><div class="flex justify-between items-center mb-2"><span class="text-body font-medium">Applied</span><span class="text-label-sm font-bold" id="sb-applied">—</span></div><div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary" id="sb-applied-bar" style="width:0%"></div></div></div>
+        <div><div class="flex justify-between items-center mb-2"><span class="text-body font-medium">Interviews</span><span class="text-label-sm font-bold" id="sb-interviews">—</span></div><div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-amber-500" id="sb-interviews-bar" style="width:0%"></div></div></div>
+        <div><div class="flex justify-between items-center mb-2"><span class="text-body font-medium">Offers</span><span class="text-label-sm font-bold" id="sb-offers">—</span></div><div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-emerald-500" id="sb-offers-bar" style="width:0%"></div></div></div>
+        <div><div class="flex justify-between items-center mb-2"><span class="text-body font-medium">Rejected</span><span class="text-label-sm font-bold" id="sb-rejected">—</span></div><div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-error" id="sb-rejected-bar" style="width:0%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Row -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+    <!-- Recent Applications -->
+    <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+      <div class="p-6 flex justify-between items-center border-b border-outline-variant">
+        <h2 class="font-h2 text-h2">Recent Applications</h2>
+        <a class="text-primary font-label-sm hover:underline" href="job-board.html">View All</a>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left">
+          <thead class="bg-surface-container-low text-on-surface-variant font-label-caps text-[10px]">
+            <tr><th class="px-6 py-3">Company</th><th class="px-6 py-3">Role</th><th class="px-6 py-3">Status</th><th class="px-6 py-3">Date</th></tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant" id="dash-apps-tbody">
+            <tr><td colspan="4" class="px-6 py-8 text-center text-on-surface-variant text-body-sm">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="grid grid-cols-2 grid-rows-3 gap-4">
+      <a href="job-board.html" class="bg-primary text-white p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:bg-primary/90 transition-all active:scale-95 shadow-sm hover:shadow-md group border border-primary cursor-pointer">
+        <span class="material-symbols-outlined text-[28px] group-hover:scale-110 transition-transform">add_circle</span>
+        <div class="text-center"><span class="font-h2 text-h2 block">Add New Job</span><p class="text-[10px] text-white/70">Manually track an application</p></div>
+      </a>
+      <a href="ats-checker.html" class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all active:scale-95 group cursor-pointer">
+        <span class="material-symbols-outlined text-[28px] text-primary group-hover:scale-110 transition-transform">target</span>
+        <div class="text-center"><span class="font-h2 text-h2 block">Scan Resume</span><p class="text-[10px] text-on-surface-variant">Check ATS score for a role</p></div>
+      </a>
+      <a href="cover-letter.html" class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all active:scale-95 group cursor-pointer">
+        <span class="material-symbols-outlined text-[28px] text-primary group-hover:scale-110 transition-transform">edit</span>
+        <div class="text-center"><span class="font-h2 text-h2 block">Write Cover Letter</span><p class="text-[10px] text-on-surface-variant">Generate AI-optimized letters</p></div>
+      </a>
+      <a href="outreach-email.html" class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all active:scale-95 group cursor-pointer">
+        <span class="material-symbols-outlined text-[28px] text-primary group-hover:scale-110 transition-transform">mail</span>
+        <div class="text-center"><span class="font-h2 text-h2 block">Outreach Email</span><p class="text-[10px] text-on-surface-variant">Draft cold emails</p></div>
+      </a>
+      <a href="linkedin-note.html" class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all active:scale-95 group cursor-pointer">
+        <span class="material-symbols-outlined text-[28px] text-primary group-hover:scale-110 transition-transform">work</span>
+        <div class="text-center"><span class="font-h2 text-h2 block">LinkedIn Note</span><p class="text-[10px] text-on-surface-variant">Generate connection notes</p></div>
+      </a>
+      <a href="remote-jobs.html" class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-primary hover:shadow-md transition-all active:scale-95 group cursor-pointer">
+        <span class="material-symbols-outlined text-[28px] text-primary group-hover:scale-110 transition-transform">public</span>
+        <div class="text-center"><span class="font-h2 text-h2 block">Browse Remote Jobs</span><p class="text-[10px] text-on-surface-variant">Fetch live listings</p></div>
+      </a>
+    </div>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="fixed bottom-8 right-8 bg-on-surface text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 translate-y-24 opacity-0 transition-all duration-300 z-50" id="toast">
+  <span class="material-symbols-outlined text-emerald-400">check_circle</span>
+  <p class="font-body font-medium" id="toast-msg">Done!</p>
+</div>
+
+<script>
+// ─── CONFIG ───
+const CFG = {
+  get n8n()         { const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_n8n_url')||EC.n8n_url||'http://localhost:5678/webhook'; },
+  get supabase_url(){ const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_supabase_url')||EC.supabase_url||''; },
+  get supabase_key(){ const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_supabase_key')||EC.supabase_key||''; },
+  get name()        { return localStorage.getItem('js_user_name') || 'Litheesh Velakaturi Rambabu'; },
+};
+
+const SB = {
+  headers: () => ({ 'Content-Type':'application/json', 'apikey': CFG.supabase_key, 'Authorization': `Bearer ${CFG.supabase_key}` }),
+  async get(table, params='') {
+    if (!CFG.supabase_url || !CFG.supabase_key) return null;
+    try {
+      const r = await fetch(`${CFG.supabase_url}/rest/v1/${table}?${params}`, { headers: SB.headers() });
+      return r.ok ? r.json() : null;
+    } catch { return null; }
+  }
+};
+
+function statusBadge(s) {
+  const map = {
+    'applied':    'bg-primary/10 text-primary',
+    'screening':  'bg-blue-100 text-blue-700',
+    'interview':  'bg-amber-100 text-amber-700',
+    'offer':      'bg-emerald-100 text-emerald-700',
+    'rejected':   'bg-red-100 text-red-700',
+    'saved':      'bg-surface-container text-on-surface-variant',
+  };
+  const cls = map[(s||'').toLowerCase()] || 'bg-surface-container text-on-surface-variant';
+  return `<span class="px-2 py-1 ${cls} text-[10px] font-bold rounded-full">${s||'—'}</span>`;
+}
+
+function formatDate(d) {
+  if (!d) return '—';
+  return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function loadDashboard() {
+  // Avatar initials
+  const parts = CFG.name.split(' ');
+  document.getElementById('avatar-initials').textContent = (parts[0][0]+(parts[1]?.[0]||'')).toUpperCase();
+
+  if (!CFG.supabase_url || !CFG.supabase_key) {
+    // Show static fallback
+    document.getElementById('stat-total-applied').textContent = '—';
+    document.getElementById('stat-interviews').textContent = '—';
+    document.getElementById('stat-offers').textContent = '—';
+    document.getElementById('stat-pending').textContent = '—';
+    document.getElementById('dash-apps-tbody').innerHTML = `<tr><td colspan="4" class="px-6 py-8 text-center text-on-surface-variant text-body-sm"><a href="settings.html" class="text-primary underline">Configure Supabase in Settings</a> to load live data.</td></tr>`;
+    return;
+  }
+
+  const apps = await SB.get('jobs', 'select=*&order=created_at.desc');
+  if (!apps) {
+    document.getElementById('dash-apps-tbody').innerHTML = `<tr><td colspan="4" class="px-6 py-8 text-center text-on-surface-variant text-body-sm">Could not connect to Supabase. Check settings.</td></tr>`;
+    return;
+  }
+
+  // Stats
+  const total = apps.length;
+  const interviews = apps.filter(a => ['interview','interviewing','screening'].includes((a.status||'').toLowerCase())).length;
+  const offers = apps.filter(a => (a.status||'').toLowerCase().includes('offer')).length;
+  const pending = apps.filter(a => ['applied','saved'].includes((a.status||'').toLowerCase())).length;
+
+  document.getElementById('stat-total-applied').textContent = total;
+  document.getElementById('stat-interviews').textContent = interviews;
+  document.getElementById('stat-offers').textContent = offers;
+  document.getElementById('stat-pending').textContent = pending;
+
+  // Status breakdown bars
+  const rejected = apps.filter(a => (a.status||'').toLowerCase().includes('reject')).length;
+  const setBar = (id, barId, count) => {
+    document.getElementById(id).textContent = count;
+    document.getElementById(barId).style.width = total > 0 ? `${Math.round(count/total*100)}%` : '0%';
+  };
+  setBar('sb-applied', 'sb-applied-bar', total);
+  setBar('sb-interviews', 'sb-interviews-bar', interviews);
+  setBar('sb-offers', 'sb-offers-bar', offers);
+  setBar('sb-rejected', 'sb-rejected-bar', rejected);
+
+  // Recent Applications (last 5)
+  const recent = apps.slice(0, 5);
+  const tbody = document.getElementById('dash-apps-tbody');
+  if (recent.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="4" class="px-6 py-8 text-center text-on-surface-variant text-body-sm">No applications yet. <a href="job-board.html" class="text-primary underline">Add your first job →</a></td></tr>`;
+    return;
+  }
+  tbody.innerHTML = recent.map(app => {
+    const initials = (app.company||'??').substring(0,2).toUpperCase();
+    return `<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+      <td class="px-6 py-4 flex items-center gap-2">
+        <div class="w-6 h-6 rounded bg-on-surface-variant/10 flex items-center justify-center text-[10px] font-bold">${escHtml(initials)}</div>
+        <span class="font-medium text-body">${escHtml(app.company)}</span>
+      </td>
+      <td class="px-6 py-4 text-body text-on-surface-variant">${escHtml(app.role||app.job_title||'—')}</td>
+      <td class="px-6 py-4">${statusBadge(app.status)}</td>
+      <td class="px-6 py-4 text-body-sm text-on-surface-variant">${formatDate(app.date_applied||app.created_at)}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── CHART BAR HOVER ───
+document.querySelectorAll('.chart-bar-glow').forEach(bar => {
+  bar.addEventListener('mouseenter', () => bar.style.transform = 'translateY(-4px)');
+  bar.addEventListener('mouseleave', () => bar.style.transform = 'translateY(0)');
+});
+
+// ─── INIT ───
+loadDashboard();
+</script>
+
+<script src="chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="config.js"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings | JobSuite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-surface": "#191c1e","surface-variant": "#e0e3e5","surface-container": "#eceef0","secondary": "#505f76",
+          "on-tertiary-container": "#b8e0ff","error-container": "#ffdad6","background": "#f7f9fb","primary-fixed": "#e2dfff",
+          "on-secondary": "#ffffff","on-error-container": "#93000a","on-primary-container": "#dad7ff","tertiary-container": "#006693",
+          "outline": "#777587","surface-container-high": "#e6e8ea","primary-container": "#4f46e5","surface-container-low": "#f2f4f6",
+          "on-primary": "#ffffff","inverse-on-surface": "#eff1f3","inverse-primary": "#c3c0ff","surface": "#f7f9fb",
+          "inverse-surface": "#2d3133","on-secondary-fixed": "#0b1c30","on-secondary-container": "#54647a",
+          "surface-bright": "#f7f9fb","secondary-fixed": "#d3e4fe","surface-dim": "#d8dadc","surface-container-lowest": "#ffffff",
+          "on-error": "#ffffff","primary": "#3525cd","on-background": "#191c1e","secondary-container": "#d0e1fb",
+          "on-tertiary-fixed": "#001e2f","on-secondary-fixed-variant": "#38485d","on-tertiary-fixed-variant": "#004c6e",
+          "tertiary": "#004d70","surface-tint": "#4d44e3","secondary-fixed-dim": "#b7c8e1","on-primary-fixed-variant": "#3323cc",
+          "error": "#ba1a1a","on-tertiary": "#ffffff","primary-fixed-dim": "#c3c0ff","tertiary-fixed": "#c9e6ff",
+          "on-primary-fixed": "#0f0069","outline-variant": "#c7c4d8","surface-container-highest": "#e0e3e5","on-surface-variant": "#464555"
+        },
+        "borderRadius": {"DEFAULT": "0.25rem","lg": "0.5rem","xl": "0.75rem","full": "9999px"},
+        "spacing": {"topbar_height": "52px","margin_mobile": "16px","container_max_width": "1200px","stack_gap": "12px","sidebar_width": "200px","gutter": "24px"},
+        "fontFamily": {"h2": ["Inter"],"body-sm": ["Inter"],"label-sm": ["Inter"],"label-caps": ["Inter"],"h1": ["Inter"],"body": ["Inter"]},
+        "fontSize": {
+          "h2": ["16px", {"lineHeight": "24px","letterSpacing": "-0.01em","fontWeight": "600"}],
+          "body-sm": ["12px", {"lineHeight": "18px","letterSpacing": "0px","fontWeight": "400"}],
+          "label-sm": ["11px", {"lineHeight": "16px","letterSpacing": "0px","fontWeight": "500"}],
+          "label-caps": ["11px", {"lineHeight": "16px","letterSpacing": "0.05em","fontWeight": "600"}],
+          "h1": ["20px", {"lineHeight": "28px","letterSpacing": "-0.02em","fontWeight": "700"}],
+          "body": ["13px", {"lineHeight": "20px","letterSpacing": "0px","fontWeight": "400"}]
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  input:focus, textarea:focus { outline: none; box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #3525cd; }
+  .paper-stack { box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); transition: box-shadow 0.2s ease-in-out; }
+  .paper-stack:hover { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
+</style>
+</head>
+<body class="bg-background text-on-surface">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-[200px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 gap-4 z-50 overflow-y-auto">
+  <div class="mb-6">
+    <h1 class="font-h1 text-h1 text-primary">JobSuite</h1>
+    <p class="text-on-surface-variant font-body-sm text-body-sm">AI-Powered Career</p>
+  </div>
+  <div class="flex-1 space-y-6">
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Main</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="dashboard.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="job-board.html"><span class="material-symbols-outlined text-[20px]">work</span><span>Job Board</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="ats-checker.html"><span class="material-symbols-outlined text-[20px]">fact_check</span><span>ATS Checker</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="cover-letter.html"><span class="material-symbols-outlined text-[20px]">description</span><span>Cover Letter</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">AI Tools</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="outreach-email.html"><span class="material-symbols-outlined text-[20px]">mail</span><span>Outreach Email</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="linkedin-note.html"><span class="material-symbols-outlined text-[20px]">share</span><span>LinkedIn Note</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="resume-generator.html"><span class="material-symbols-outlined text-[20px]">badge</span><span>Resume Tailor</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Data</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="contacts.html"><span class="material-symbols-outlined text-[20px]">contacts</span><span>Contacts</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="remote-jobs.html"><span class="material-symbols-outlined text-[20px]">public</span><span>Remote Jobs</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="mt-auto pt-4 border-t border-outline-variant space-y-1">
+    <a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-primary rounded-lg font-body transition-all duration-200 cursor-pointer" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a>
+  </div>
+</aside>
+
+<!-- Main -->
+<div class="ml-[200px] min-h-screen">
+  <header class="sticky top-0 right-0 w-full h-[52px] bg-surface-container-lowest border-b border-outline-variant z-10">
+    <div class="flex justify-between items-center px-gutter h-full max-w-container_max_width mx-auto">
+      <div class="flex items-center gap-4 flex-1">
+        <div class="relative w-full max-w-[400px]">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+          <input class="w-full pl-10 pr-4 py-1.5 bg-surface-container-low border border-outline-variant rounded-full text-body focus:ring-2 focus:ring-primary" placeholder="Search settings..." type="text"/>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">notifications</span></button>
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">help_outline</span></button>
+        <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant bg-secondary-container flex items-center justify-center text-primary font-bold text-xs" id="avatar-initials">LV</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="p-gutter max-w-container_max_width mx-auto">
+    <div class="mb-8">
+      <h2 class="font-h1 text-h1 text-on-surface mb-1">Account Settings</h2>
+      <p class="text-on-surface-variant font-body">Manage your AI configurations and professional profile.</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left: API Connections -->
+      <section class="lg:col-span-5 space-y-6">
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 paper-stack">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-primary-fixed flex items-center justify-center rounded-lg">
+              <span class="material-symbols-outlined text-primary">api</span>
+            </div>
+            <h3 class="font-h2 text-h2 text-on-surface">API Connections</h3>
+          </div>
+          <form class="space-y-4" id="api-form">
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">N8N WEBHOOK URL</label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-n8n-url" placeholder="http://localhost:5678/webhook" type="text"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">GROQ API KEY</label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-groq-key" placeholder="gsk_••••••••••••••••••••" type="password"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">GEMINI API KEY <span class="text-primary font-semibold">(JobBot AI)</span></label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-gemini-key" placeholder="AIzaSy••••••••••••••••••" type="password"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">SUPABASE PROJECT URL</label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-supabase-url" placeholder="https://xxxx.supabase.co" type="text"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">SUPABASE ANON KEY</label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-supabase-key" placeholder="eyJhbGci..." type="password"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">HUNTER.IO API KEY</label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-hunter-key" placeholder="••••••••••••••••" type="password"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">GOOGLE OAUTH CLIENT ID <span class="text-primary font-semibold">(Gmail Drafts)</span></label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-google-client-id" placeholder="xxxxxxx.apps.googleusercontent.com" type="text"/>
+              <p class="text-[11px] text-on-surface-variant mt-1">Required to auto-save emails as Gmail drafts. <a href="https://console.cloud.google.com" target="_blank" class="text-primary underline">Get it from Google Cloud Console →</a></p>
+            </div>
+            <div class="pt-4 flex items-center justify-between">
+              <button class="px-4 py-2 bg-primary text-on-primary font-h2 text-[14px] rounded-lg transition-transform active:scale-95" id="s-save-api-btn" type="button">Save Settings</button>
+              <div class="flex items-center gap-2 text-emerald-600 font-body-sm bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100" id="api-status">
+                <span class="material-symbols-outlined text-[16px]">check_circle</span>
+                <span id="api-status-text">All systems operational</span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="relative overflow-hidden bg-inverse-surface rounded-xl p-6 text-inverse-on-surface paper-stack">
+          <div class="relative z-10">
+            <h4 class="font-h2 text-h2 mb-2">Need Help?</h4>
+            <p class="text-body text-surface-variant opacity-80 mb-4">View our API documentation to learn more about setting up your custom career workflows.</p>
+            <a class="inline-flex items-center gap-2 text-primary-fixed font-semibold hover:underline" href="https://docs.n8n.io" target="_blank">Documentation <span class="material-symbols-outlined text-[18px]">open_in_new</span></a>
+          </div>
+          <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-primary opacity-20 rounded-full blur-2xl"></div>
+        </div>
+      </section>
+
+      <!-- Right: Profile -->
+      <section class="lg:col-span-7">
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 paper-stack">
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-secondary-container flex items-center justify-center rounded-lg">
+                <span class="material-symbols-outlined text-on-secondary-container">person</span>
+              </div>
+              <h3 class="font-h2 text-h2 text-on-surface">Your Profile</h3>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+              <span class="text-label-caps text-on-surface-variant">Profile Visible</span>
+            </div>
+          </div>
+          <form class="space-y-6" id="profile-form">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-label-caps text-on-surface-variant mb-1.5">NAME</label>
+                <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-user-name" placeholder="Litheesh Velakaturi Rambabu" type="text"/>
+              </div>
+              <div>
+                <label class="block text-label-caps text-on-surface-variant mb-1.5">EMAIL</label>
+                <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-user-email" placeholder="vrlitheesh2002@gmail.com" type="email"/>
+              </div>
+              <div>
+                <label class="block text-label-caps text-on-surface-variant mb-1.5">PHONE</label>
+                <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-user-phone" placeholder="+1 (716) 368-9971" type="tel"/>
+              </div>
+              <div>
+                <label class="block text-label-caps text-on-surface-variant mb-1.5">WEBSITE</label>
+                <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-user-website" placeholder="litheesh.com" type="text"/>
+              </div>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">CURRENT TITLE</label>
+              <input class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body" id="s-user-title" placeholder="AI & ML Engineer" type="text"/>
+            </div>
+            <div>
+              <label class="block text-label-caps text-on-surface-variant mb-1.5">RESUME TEXT (FOR AI PERSONALIZATION)</label>
+              <textarea class="w-full px-3 py-2.5 bg-white border border-outline-variant rounded-xl text-body resize-none" id="s-resume-text" placeholder="Paste your professional experience here to help our AI better match you with jobs..." rows="6"></textarea>
+              <p class="mt-2 text-label-sm text-on-surface-variant italic">This text is used to customize cover letters and outreach emails.</p>
+            </div>
+            <div class="pt-4 border-t border-outline-variant">
+              <button class="px-6 py-2.5 bg-primary text-on-primary font-h2 text-[14px] rounded-lg transition-transform active:scale-95 shadow-sm hover:shadow-md" id="s-save-profile-btn" type="button">Save Profile</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="fixed bottom-8 right-8 bg-on-surface text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 translate-y-24 opacity-0 transition-all duration-300 z-50" id="toast">
+  <span class="material-symbols-outlined text-emerald-400">check_circle</span>
+  <p class="font-body font-medium" id="toast-msg">Saved!</p>
+</div>
+
+
+<script>
+// ─── CONFIG ───
+// Falls back to config.js values if localStorage is empty
+const EC = window.ENV_CONFIG || {};
+const CFG = {
+  get n8n()         { return localStorage.getItem('js_n8n_url')      || EC.n8n_url      || 'http://localhost:5678/webhook'; },
+  get supabase_url(){ return localStorage.getItem('js_supabase_url') || EC.supabase_url || ''; },
+  get supabase_key(){ return localStorage.getItem('js_supabase_key') || EC.supabase_key || ''; },
+  get groq_key()    { return localStorage.getItem('js_groq_key')     || EC.groq_key     || ''; },
+  get hunter_key()  { return localStorage.getItem('js_hunter_key')   || EC.hunter_key   || ''; },
+  get name()        { return localStorage.getItem('js_user_name')    || 'Litheesh Velakaturi Rambabu'; },
+  get email()       { return localStorage.getItem('js_user_email')   || 'vrlitheesh2002@gmail.com'; },
+  get phone()       { return localStorage.getItem('js_user_phone')   || '+1 (716) 368-9971'; },
+  get website()     { return localStorage.getItem('js_user_website') || 'litheesh.com'; },
+  get title()       { return localStorage.getItem('js_user_title')   || 'AI & ML Engineer'; },
+  get resume()      { return localStorage.getItem('js_resume_text')  || ''; },
+};
+
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  const m = document.getElementById('toast-msg');
+  if (!t||!m) return;
+  m.textContent = msg;
+  const ic = t.querySelector('.material-symbols-outlined');
+  if(ic){ ic.textContent = type==='error'?'error':'check_circle'; ic.className=`material-symbols-outlined ${type==='error'?'text-red-400':'text-emerald-400'}`; }
+  t.classList.remove('translate-y-24','opacity-0');
+  t.classList.add('translate-y-0','opacity-100');
+  setTimeout(()=>{ t.classList.remove('translate-y-0','opacity-100'); t.classList.add('translate-y-24','opacity-0'); }, 3500);
+}
+
+// ─── LOAD FROM LOCALSTORAGE (falls back to config.js) ───
+function loadSettings() {
+  document.getElementById('s-n8n-url').value      = localStorage.getItem('js_n8n_url')      || EC.n8n_url      || '';
+  document.getElementById('s-groq-key').value     = localStorage.getItem('js_groq_key')     || EC.groq_key     || '';
+  document.getElementById('s-gemini-key').value   = localStorage.getItem('js_gemini_key')   || EC.gemini_key   || '';
+  document.getElementById('s-supabase-url').value = localStorage.getItem('js_supabase_url') || EC.supabase_url || '';
+  document.getElementById('s-supabase-key').value = localStorage.getItem('js_supabase_key') || EC.supabase_key || '';
+  document.getElementById('s-hunter-key').value        = localStorage.getItem('js_hunter_key')        || EC.hunter_key        || '';
+  document.getElementById('s-google-client-id').value  = localStorage.getItem('js_google_client_id') || EC.google_client_id  || '';
+  document.getElementById('s-user-name').value    = CFG.name;
+  document.getElementById('s-user-email').value   = CFG.email;
+  document.getElementById('s-user-phone').value   = CFG.phone;
+  document.getElementById('s-user-website').value = CFG.website;
+  document.getElementById('s-user-title').value   = CFG.title;
+  document.getElementById('s-resume-text').value  = CFG.resume;
+  // Avatar initials
+  const parts = CFG.name.split(' ');
+  document.getElementById('avatar-initials').textContent = (parts[0][0]+(parts[1]?.[0]||'')).toUpperCase();
+}
+
+// ─── SAVE API SETTINGS ───
+document.getElementById('s-save-api-btn').addEventListener('click', () => {
+  localStorage.setItem('js_n8n_url',      document.getElementById('s-n8n-url').value.trim());
+  localStorage.setItem('js_groq_key',     document.getElementById('s-groq-key').value.trim());
+  localStorage.setItem('js_gemini_key',   document.getElementById('s-gemini-key').value.trim());
+  localStorage.setItem('js_supabase_url', document.getElementById('s-supabase-url').value.trim().replace(/\/$/, ''));
+  localStorage.setItem('js_supabase_key', document.getElementById('s-supabase-key').value.trim());
+  localStorage.setItem('js_hunter_key',        document.getElementById('s-hunter-key').value.trim());
+  localStorage.setItem('js_google_client_id',  document.getElementById('s-google-client-id').value.trim());
+  showToast('API settings saved successfully!');
+  const btn = document.getElementById('s-save-api-btn');
+  const orig = btn.textContent;
+  btn.textContent = 'Saved!';
+  btn.classList.replace('bg-primary','bg-emerald-600');
+  setTimeout(()=>{ btn.textContent=orig; btn.classList.replace('bg-emerald-600','bg-primary'); }, 2000);
+});
+
+// ─── SAVE PROFILE SETTINGS ───
+document.getElementById('s-save-profile-btn').addEventListener('click', () => {
+  localStorage.setItem('js_user_name',    document.getElementById('s-user-name').value.trim() || 'Litheesh Velakaturi Rambabu');
+  localStorage.setItem('js_user_email',   document.getElementById('s-user-email').value.trim() || 'vrlitheesh2002@gmail.com');
+  localStorage.setItem('js_user_phone',   document.getElementById('s-user-phone').value.trim() || '+1 (716) 368-9971');
+  localStorage.setItem('js_user_website', document.getElementById('s-user-website').value.trim() || 'litheesh.com');
+  localStorage.setItem('js_user_title',   document.getElementById('s-user-title').value.trim() || 'AI & ML Engineer');
+  localStorage.setItem('js_resume_text',  document.getElementById('s-resume-text').value);
+  showToast('Profile saved successfully!');
+  const btn = document.getElementById('s-save-profile-btn');
+  const orig = btn.textContent;
+  btn.textContent = 'Saved!';
+  btn.classList.replace('bg-primary','bg-emerald-600');
+  setTimeout(()=>{ btn.textContent=orig; btn.classList.replace('bg-emerald-600','bg-primary'); }, 2000);
+});
+
+// ─── INIT ───
+loadSettings();
+</script>
+
+<script src="chatbot.js"></script>
+</body>
+</html>

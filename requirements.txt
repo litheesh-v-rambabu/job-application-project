@@ -1,0 +1,33 @@
+# Job Tracker Application - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core utilities
+python-dotenv==1.0.0          # Load environment variables from .env
+requests==2.31.0              # HTTP client for APIs
+
+# PDF & Document Processing
+PyPDF2==3.0.1                 # PDF reading/writing
+python-docx==0.8.11           # Word document handling
+
+# Text Processing & AI Utils
+nltk==3.8.1                   # Natural Language Toolkit
+textstat==0.7.3               # Readability scoring
+
+# LaTeX & PDF Generation
+pylatexenc==2.10              # LaTeX encoding utilities
+
+# Database
+pymongo==4.6.0                # If needed for future MongoDB integration
+
+
+# Scheduling
+schedule==1.2.0               # Job scheduling
+
+# Utilities
+python-dateutil==2.8.2        # Date/time utilities
+pydantic==2.9.0          # Data validation (2.9+ supports Python 3.13)
+typing-extensions==4.12.2     # Type hints (>=4.12.2 required for Python 3.13)
+
+# Optional: For future API/backend if needed
+flask==3.0.0                  # Web framework (optional)
+flask-cors==4.0.0             # CORS support (optional)

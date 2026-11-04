@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<script src="config.js"></script>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Board | JobSuite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode:"class",
+    theme:{ extend:{ "colors":{ "on-surface":"#191c1e","surface-variant":"#e0e3e5","surface-container":"#eceef0","secondary":"#505f76","on-tertiary-container":"#b8e0ff","error-container":"#ffdad6","background":"#f7f9fb","primary-fixed":"#e2dfff","on-secondary":"#ffffff","on-error-container":"#93000a","on-primary-container":"#dad7ff","tertiary-container":"#006693","outline":"#777587","surface-container-high":"#e6e8ea","primary-container":"#4f46e5","surface-container-low":"#f2f4f6","on-primary":"#ffffff","inverse-on-surface":"#eff1f3","inverse-primary":"#c3c0ff","surface":"#f7f9fb","inverse-surface":"#2d3133","on-secondary-fixed":"#0b1c30","on-secondary-container":"#54647a","tertiary-fixed-dim":"#89ceff","surface-bright":"#f7f9fb","secondary-fixed":"#d3e4fe","surface-dim":"#d8dadc","surface-container-lowest":"#ffffff","on-error":"#ffffff","primary":"#3525cd","on-background":"#191c1e","secondary-container":"#d0e1fb","on-tertiary-fixed":"#001e2f","on-secondary-fixed-variant":"#38485d","on-tertiary-fixed-variant":"#004c6e","tertiary":"#004d70","surface-tint":"#4d44e3","secondary-fixed-dim":"#b7c8e1","on-primary-fixed-variant":"#3323cc","error":"#ba1a1a","on-tertiary":"#ffffff","primary-fixed-dim":"#c3c0ff","tertiary-fixed":"#c9e6ff","on-primary-fixed":"#0f0069","outline-variant":"#c7c4d8","surface-container-highest":"#e0e3e5","on-surface-variant":"#464555" },
+    "borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},
+    "spacing":{"topbar_height":"52px","margin_mobile":"16px","container_max_width":"1200px","stack_gap":"12px","sidebar_width":"200px","gutter":"24px"},
+    "fontFamily":{"h2":["Inter"],"body-sm":["Inter"],"label-sm":["Inter"],"label-caps":["Inter"],"h1":["Inter"],"body":["Inter"]},
+    "fontSize":{"h2":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","letterSpacing":"0px","fontWeight":"400"}],"label-sm":["11px",{"lineHeight":"16px","letterSpacing":"0px","fontWeight":"500"}],"label-caps":["11px",{"lineHeight":"16px","letterSpacing":"0.05em","fontWeight":"600"}],"h1":["20px",{"lineHeight":"28px","letterSpacing":"-0.02em","fontWeight":"700"}],"body":["13px",{"lineHeight":"20px","letterSpacing":"0px","fontWeight":"400"}]}
+    }}
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  .active-pill { background-color: #3525cd; color: #ffffff; }
+</style>
+</head>
+<body class="bg-background text-on-surface">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-[200px] bg-surface-container-lowest border-r border-outline-variant flex flex-col p-4 gap-4 z-50 overflow-y-auto">
+  <div class="mb-6"><h1 class="font-h1 text-h1 text-primary">JobSuite</h1><p class="text-on-surface-variant font-body-sm text-body-sm">AI-Powered Career</p></div>
+  <div class="flex-1 space-y-6">
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Main</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="dashboard.html"><span class="material-symbols-outlined text-[20px]">dashboard</span><span>Dashboard</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-primary rounded-lg font-h2 transition-all duration-200" href="job-board.html"><span class="material-symbols-outlined text-[20px]">work</span><span class="font-medium">Job Board</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="ats-checker.html"><span class="material-symbols-outlined text-[20px]">fact_check</span><span>ATS Checker</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="cover-letter.html"><span class="material-symbols-outlined text-[20px]">description</span><span>Cover Letter</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">AI Tools</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="outreach-email.html"><span class="material-symbols-outlined text-[20px]">mail</span><span>Outreach Email</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="linkedin-note.html"><span class="material-symbols-outlined text-[20px]">share</span><span>LinkedIn Note</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="resume-generator.html"><span class="material-symbols-outlined text-[20px]">badge</span><span>Resume Tailor</span></a>
+      </nav>
+    </section>
+    <section>
+      <h3 class="px-3 mb-2 font-label-caps text-[10px] text-on-surface-variant/60 tracking-widest uppercase">Data</h3>
+      <nav class="space-y-1">
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="contacts.html"><span class="material-symbols-outlined text-[20px]">contacts</span><span>Contacts</span></a>
+        <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="remote-jobs.html"><span class="material-symbols-outlined text-[20px]">public</span><span>Remote Jobs</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="mt-auto pt-4 border-t border-outline-variant space-y-1">
+    <a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container rounded-lg font-body transition-all duration-200 cursor-pointer" href="settings.html"><span class="material-symbols-outlined text-[20px]">settings</span><span>Settings</span></a>
+  </div>
+</aside>
+
+<!-- Main -->
+<main class="ml-[200px] min-h-screen">
+  <header class="sticky top-0 right-0 w-full h-[52px] border-b border-outline-variant bg-surface z-10">
+    <div class="flex justify-between items-center px-gutter max-w-container_max_width h-full mx-auto">
+      <div class="flex items-center gap-4 flex-1">
+        <div class="relative w-full max-w-md">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+          <input class="w-full bg-surface-container-low border-none rounded-xl pl-10 py-1.5 text-body focus:ring-2 focus:ring-primary" placeholder="Search applications..." type="text"/>
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button class="text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+        <div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-primary font-bold text-xs border border-outline-variant" id="avatar-initials">LV</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="p-gutter max-w-container_max_width mx-auto">
+    <div class="flex justify-between items-end mb-8">
+      <div>
+        <h2 class="font-h1 text-[32px] font-bold text-on-surface tracking-tight mb-1">Job Board</h2>
+        <p class="text-secondary font-body">Track and manage your professional career journey in one place.</p>
+      </div>
+      <button class="flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-xl font-semibold hover:shadow-lg transition-all active:scale-95" id="add-job-btn">
+        <span class="material-symbols-outlined text-[20px]">add</span> Add Job
+      </button>
+    </div>
+
+    <!-- Filter Pills -->
+    <div class="flex flex-wrap gap-2 mb-8">
+      <button class="active-pill job-filter-pill px-4 py-1.5 rounded-full text-label-sm font-semibold transition-all" data-filter="all">All</button>
+      <button class="bg-white border border-outline-variant text-on-surface-variant px-4 py-1.5 rounded-full text-label-sm font-semibold hover:bg-surface-container-low transition-all job-filter-pill" data-filter="saved">Saved</button>
+      <button class="bg-white border border-outline-variant text-on-surface-variant px-4 py-1.5 rounded-full text-label-sm font-semibold hover:bg-surface-container-low transition-all job-filter-pill" data-filter="applied">Applied</button>
+      <button class="bg-white border border-outline-variant text-on-surface-variant px-4 py-1.5 rounded-full text-label-sm font-semibold hover:bg-surface-container-low transition-all job-filter-pill" data-filter="screening">Screening</button>
+      <button class="bg-white border border-outline-variant text-on-surface-variant px-4 py-1.5 rounded-full text-label-sm font-semibold hover:bg-surface-container-low transition-all job-filter-pill" data-filter="interview">Interview</button>
+      <button class="bg-white border border-outline-variant text-on-surface-variant px-4 py-1.5 rounded-full text-label-sm font-semibold hover:bg-surface-container-low transition-all job-filter-pill" data-filter="offer">Offer</button>
+      <button class="bg-white border border-outline-variant text-on-surface-variant px-4 py-1.5 rounded-full text-label-sm font-semibold hover:bg-surface-container-low transition-all job-filter-pill" data-filter="rejected">Rejected</button>
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm" id="jobs-table-container">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-surface-container-low border-b border-outline-variant">
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider">Company</th>
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider">Role</th>
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider">Location</th>
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider">Source</th>
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider">Status</th>
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider">Date Applied</th>
+              <th class="px-6 py-4 text-label-caps text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant" id="jobs-tbody">
+            <tr><td colspan="7" class="px-6 py-10 text-center text-on-surface-variant text-body-sm">Loading...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hidden flex-col items-center justify-center py-24 text-center" id="jobs-empty">
+        <div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-4"><span class="material-symbols-outlined text-outline text-[32px]">work_off</span></div>
+        <h3 class="font-h2 text-on-surface mb-2">No jobs found</h3>
+        <p class="text-secondary font-body max-w-xs mx-auto">Try adjusting your filters or add a new job to start tracking.</p>
+      </div>
+      <div class="flex items-center justify-between px-6 py-4 bg-surface-container-low/50 border-t border-outline-variant">
+        <p class="text-body-sm text-secondary">Showing <span class="font-semibold text-on-surface" id="jobs-showing">0</span> applications</p>
+        <div class="flex gap-2">
+          <button class="px-3 py-1.5 border border-outline-variant rounded-lg text-body-sm font-medium text-secondary hover:bg-white disabled:opacity-50" disabled>Previous</button>
+          <button class="px-3 py-1.5 border border-outline-variant rounded-lg text-body-sm font-medium text-on-surface bg-white hover:bg-surface-container-low">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bento Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div class="bg-white p-6 border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="p-2 bg-primary/10 rounded-lg"><span class="material-symbols-outlined text-primary">analytics</span></div>
+          <span class="text-emerald-600 text-label-sm font-bold bg-emerald-50 px-2 py-0.5 rounded-full" id="response-rate-badge">+12% vs last month</span>
+        </div>
+        <p class="text-secondary text-label-caps uppercase mb-1">Response Rate</p>
+        <h4 class="text-[28px] font-bold text-on-surface" id="response-rate">—%</h4>
+      </div>
+      <div class="bg-white p-6 border border-outline-variant rounded-xl shadow-sm hover:shadow-md transition-all">
+        <div class="flex items-center justify-between mb-4">
+          <div class="p-2 bg-tertiary-container/10 rounded-lg"><span class="material-symbols-outlined text-tertiary-container">schedule</span></div>
+        </div>
+        <p class="text-secondary text-label-caps uppercase mb-1">Avg. Days to Interview</p>
+        <h4 class="text-[28px] font-bold text-on-surface" id="avg-days">—</h4>
+      </div>
+      <div class="relative overflow-hidden bg-on-surface text-white p-6 rounded-xl shadow-lg group">
+        <div class="relative z-10">
+          <p class="text-surface-variant text-label-caps uppercase mb-1">Goal Progress</p>
+          <h4 class="text-[28px] font-bold mb-4" id="goal-progress">Keep applying!</h4>
+          <a href="ats-checker.html" class="bg-primary text-white text-body-sm font-semibold px-4 py-2 rounded-lg hover:bg-primary-container transition-colors inline-block">Prepare Now</a>
+        </div>
+        <div class="absolute right-[-20px] bottom-[-20px] opacity-10 group-hover:scale-110 transition-transform duration-500"><span class="material-symbols-outlined text-[120px]">trophy</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Add Job Modal -->
+<div class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center" id="modal-add-job">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md mx-4">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="font-h1 text-h1 text-on-surface">Add New Job</h3>
+      <button class="text-on-surface-variant hover:text-on-surface transition-colors" id="modal-close-btn"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="space-y-4">
+      <div><label class="block text-label-caps text-on-surface-variant mb-1.5">COMPANY *</label><input class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-company" placeholder="e.g. Google" type="text"/></div>
+      <div><label class="block text-label-caps text-on-surface-variant mb-1.5">ROLE *</label><input class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-role" placeholder="e.g. Senior Engineer" type="text"/></div>
+      <div class="grid grid-cols-2 gap-4">
+        <div><label class="block text-label-caps text-on-surface-variant mb-1.5">LOCATION</label><input class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-location" placeholder="Remote" type="text"/></div>
+        <div><label class="block text-label-caps text-on-surface-variant mb-1.5">SOURCE</label><input class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-source" placeholder="LinkedIn" type="text"/></div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div><label class="block text-label-caps text-on-surface-variant mb-1.5">STATUS</label>
+          <select class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-status">
+            <option value="Applied">Applied</option><option value="Saved">Saved</option><option value="Screening">Screening</option><option value="Interview">Interview</option><option value="Offer">Offer</option><option value="Rejected">Rejected</option>
+          </select>
+        </div>
+        <div><label class="block text-label-caps text-on-surface-variant mb-1.5">DATE APPLIED</label><input class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-date" type="date"/></div>
+      </div>
+      <div><label class="block text-label-caps text-on-surface-variant mb-1.5">JOB URL</label><input class="w-full px-3 py-2.5 border border-outline-variant rounded-xl text-body focus:ring-2 focus:ring-primary outline-none" id="aj-url" placeholder="https://..." type="url"/></div>
+    </div>
+    <div class="flex gap-3 mt-6">
+      <button class="flex-1 px-4 py-2.5 border border-outline-variant text-on-surface-variant rounded-xl font-h2 hover:bg-surface-container-low transition-all" id="aj-cancel-btn">Cancel</button>
+      <button class="flex-1 px-4 py-2.5 bg-primary text-white rounded-xl font-h2 hover:opacity-90 transition-all active:scale-95" id="aj-save-btn">Save Job</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="fixed bottom-8 right-8 bg-on-surface text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-4 translate-y-24 opacity-0 transition-all duration-300 z-50" id="toast">
+  <span class="material-symbols-outlined text-emerald-400">check_circle</span>
+  <p class="font-body font-medium" id="toast-msg">Job application added successfully!</p>
+</div>
+
+<script>
+const CFG = {
+  get supabase_url(){ const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_supabase_url')||EC.supabase_url||''; },
+  get supabase_key(){ const EC=window.ENV_CONFIG||{}; return localStorage.getItem('js_supabase_key')||EC.supabase_key||''; },
+  get name()        { return localStorage.getItem('js_user_name')||'Litheesh Velakaturi Rambabu'; },
+};
+const SB = {
+  h: () => ({'Content-Type':'application/json','apikey':CFG.supabase_key,'Authorization':`Bearer ${CFG.supabase_key}`}),
+  async get(t,p=''){ if(!CFG.supabase_url||!CFG.supabase_key) return []; try{const r=await fetch(`${CFG.supabase_url}/rest/v1/${t}?${p}`,{headers:SB.h()}); return r.ok?r.json():[];}catch{return[];} },
+  async post(t,d){ const r=await fetch(`${CFG.supabase_url}/rest/v1/${t}`,{method:'POST',headers:{...SB.h(),'Prefer':'return=representation'},body:JSON.stringify(d)}); return r.json(); },
+  async del(t,id){ return fetch(`${CFG.supabase_url}/rest/v1/${t}?id=eq.${id}`,{method:'DELETE',headers:SB.h()}); }
+};
+
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast'),m=document.getElementById('toast-msg');
+  if(!t||!m) return; m.textContent=msg;
+  const ic=t.querySelector('.material-symbols-outlined');
+  if(ic){ic.textContent=type==='error'?'error':'check_circle';ic.className=`material-symbols-outlined ${type==='error'?'text-red-400':'text-emerald-400'}`;}
+  t.classList.remove('translate-y-24','opacity-0'); t.classList.add('translate-y-0','opacity-100');
+  setTimeout(()=>{t.classList.remove('translate-y-0','opacity-100');t.classList.add('translate-y-24','opacity-0');},3500);
+}
+
+function statusBadge(s){
+  const map={'applied':'bg-primary/10 text-primary','saved':'bg-surface-container-highest text-on-surface-variant','screening':'bg-blue-100 text-blue-700','interview':'bg-amber-100 text-amber-700','offer':'bg-emerald-100 text-emerald-700','rejected':'bg-error-container text-on-error-container'};
+  const cls=map[(s||'').toLowerCase()]||'bg-surface-container text-on-surface-variant';
+  return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${cls}">${escHtml(s||'—')}</span>`;
+}
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function formatDate(d){if(!d) return '—'; try{return new Date(d).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}catch{return d;}}
+
+let allJobs = [];
+
+async function loadJobs(filter='all'){
+  if(!CFG.supabase_url||!CFG.supabase_key){
+    document.getElementById('jobs-tbody').innerHTML=`<tr><td colspan="7" class="px-6 py-10 text-center text-on-surface-variant text-body-sm"><a href="settings.html" class="text-primary underline">Configure Supabase in Settings</a> to load live job data.</td></tr>`;
+    return;
+  }
+  const apps = await SB.get('job_applications','select=*&order=created_at.desc');
+  allJobs = apps;
+  renderJobs(filter);
+}
+
+function renderJobs(filter='all'){
+  const filtered = filter==='all' ? allJobs : allJobs.filter(a=>(a.status||'').toLowerCase()===filter.toLowerCase());
+  document.getElementById('jobs-showing').textContent = filtered.length;
+  const tbody = document.getElementById('jobs-tbody');
+  const empty = document.getElementById('jobs-empty');
+  if(filtered.length===0){
+    tbody.innerHTML='';
+    empty.classList.remove('hidden'); empty.classList.add('flex');
+    return;
+  }
+  empty.classList.add('hidden'); empty.classList.remove('flex');
+  tbody.innerHTML = filtered.map(app=>`
+    <tr class="hover:bg-surface-container-lowest transition-colors group">
+      <td class="px-6 py-4">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center border border-outline-variant text-[11px] font-bold text-on-surface-variant">${escHtml((app.company||'??').substring(0,2).toUpperCase())}</div>
+          <span class="font-h2 text-on-surface">${escHtml(app.company||'—')}</span>
+        </div>
+      </td>
+      <td class="px-6 py-4 font-body text-on-surface">${escHtml(app.role||app.job_title||'—')}</td>
+      <td class="px-6 py-4 font-body text-secondary">${escHtml(app.location||'Remote')}</td>
+      <td class="px-6 py-4 font-body text-secondary">${escHtml(app.source||'—')}</td>
+      <td class="px-6 py-4">${statusBadge(app.status)}</td>
+      <td class="px-6 py-4 font-body text-secondary">${formatDate(app.date_applied||app.created_at)}</td>
+      <td class="px-6 py-4 text-right">
+        <div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+          <button class="p-1.5 text-secondary hover:text-primary hover:bg-surface-container-low rounded-lg transition-colors" title="Open URL" onclick="if('${escHtml(app.url||'')}') window.open('${escHtml(app.url||'')}','_blank')"><span class="material-symbols-outlined text-[20px]">open_in_new</span></button>
+          <button class="p-1.5 text-secondary hover:text-error hover:bg-error-container/20 rounded-lg transition-colors" onclick="deleteJob('${app.id}')"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+        </div>
+      </td>
+    </tr>`).join('');
+
+  // Stats
+  const total = allJobs.length;
+  const responded = allJobs.filter(a=>['interview','screening','offer'].includes((a.status||'').toLowerCase())).length;
+  document.getElementById('response-rate').textContent = total>0 ? Math.round(responded/total*100)+'%' : '—%';
+}
+
+async function deleteJob(id){
+  if(!confirm('Delete this job entry?')) return;
+  await SB.del('job_applications', id);
+  showToast('Job deleted.','success');
+  loadJobs();
+}
+
+// Filter pills
+document.querySelectorAll('.job-filter-pill').forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    document.querySelectorAll('.job-filter-pill').forEach(p=>{
+      p.classList.remove('active-pill'); p.classList.add('bg-white','border','border-outline-variant','text-on-surface-variant');
+    });
+    pill.classList.add('active-pill'); pill.classList.remove('bg-white','border','border-outline-variant','text-on-surface-variant');
+    renderJobs(pill.dataset.filter);
+  });
+});
+
+// Add Job Modal
+document.getElementById('add-job-btn').addEventListener('click',()=>{
+  document.getElementById('aj-date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('modal-add-job').classList.remove('hidden');
+});
+document.getElementById('modal-close-btn').addEventListener('click',()=>document.getElementById('modal-add-job').classList.add('hidden'));
+document.getElementById('aj-cancel-btn').addEventListener('click',()=>document.getElementById('modal-add-job').classList.add('hidden'));
+document.getElementById('modal-add-job').addEventListener('click',(e)=>{if(e.target===document.getElementById('modal-add-job')) document.getElementById('modal-add-job').classList.add('hidden');});
+
+document.getElementById('aj-save-btn').addEventListener('click', async()=>{
+  const company = document.getElementById('aj-company').value.trim();
+  const role    = document.getElementById('aj-role').value.trim();
+  if(!company||!role){ showToast('Company and Role are required.','error'); return; }
+  if(!CFG.supabase_url||!CFG.supabase_key){ showToast('Configure Supabase in Settings first.','error'); return; }
+  const btn = document.getElementById('aj-save-btn');
+  btn.textContent = 'Saving...'; btn.disabled = true;
+  const data = {
+    company, role, location: document.getElementById('aj-location').value.trim()||'Remote',
+    source: document.getElementById('aj-source').value.trim()||'Manual',
+    status: document.getElementById('aj-status').value,
+    date_applied: document.getElementById('aj-date').value || new Date().toISOString().split('T')[0],
+    url: document.getElementById('aj-url').value.trim(),
+  };
+  const res = await SB.post('job_applications', data);
+  btn.textContent = 'Save Job'; btn.disabled = false;
+  if(Array.isArray(res) && res.length>0){
+    document.getElementById('modal-add-job').classList.add('hidden');
+    showToast('Job application added successfully!');
+    loadJobs();
+    ['aj-company','aj-role','aj-location','aj-source','aj-url'].forEach(id=>document.getElementById(id).value='');
+  } else {
+    showToast('Failed to save. Check Supabase settings.','error');
+  }
+});
+
+// Init
+const parts = CFG.name.split(' ');
+document.getElementById('avatar-initials').textContent = (parts[0][0]+(parts[1]?.[0]||'')).toUpperCase();
+loadJobs();
+</script>
+
+<script src="chatbot.js"></script>
+</body>
+</html>
